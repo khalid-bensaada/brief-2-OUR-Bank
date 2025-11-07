@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("HnTcHkKN21ZuJ1pRX");
+  })();
+</script>
+
+</head>
+<style>
+    .swal2-container {
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.9) !important;
+    }
+</style>
+
+<body
+    class="flex relative justify-center items-center w-[100%] h-[100VH] bg-linear-to-tr from-sky-300 via-sky-700 to-blue-500">
+    <main class=" w-[80%] h-[80%] rounded-2xl overflow-hidden hidden bg-white  lg:flex container1">
+        <div class="relative w-2/5 h-full flex flex-col justify-center items-center text-center overflow-hidden">
+            <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+                <source src="/assets/4954761_Coll_halloween_Dusty_6144x3456.mp4" type="video/mp4" />
+            </video>
+
+            <div class="absolute inset-0 bg-black/40"></div>
+
+            <div class="relative z-10">
+                <h1 class="text-white text-5xl font-extrabold mb-4">SignUp</h1>
+                <h2 class="text-white text-3xl font-bold">Welcome to our bank</h2>
+            </div>
+        </div>
+        <div class="grid grid-rows-16 w-[100%] items-center justify-center">
+            <div class="flex justify-evenly col-span-3 w-[60vw] row-end-5">
+                <div class="flex flex-col gap-2 row-end-5">
+                    <label for="fullName" class="text-xl w-[19vw]">Full Name</label>
+                    <input type="text" name="fullName" id="fullName"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col gap-2 row-end-5">
+                    <label for="CIN" class="text-xl w-[19vw]">CIN</label>
+                    <input type="text" name="CIN" id="CIN"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+            </div>
+            <div class="flex justify-evenly col-span-3 w-[60vw] row-end-8">
+                <div class="flex flex-col gap-2 row-end-9">
+                    <label for="Telephone" class="w-[19vw] text-xl">Telephone</label>
+                    <input type="text" name="Telephone" id="Telephone"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col gap-2 row-end-9">
+                    <label for="email" class="w-[19vw] text-xl">Email</label>
+                    <input type="text" name="email" id="Sign-email"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+            </div>
+            <div class="flex justify-evenly col-span-3 w-[60vw] row-end-11">
+                <div class="flex flex-col gap-2 row-end-9 relative left-[1.5vw]">
+                    <label for="password" class="w-[19vw] text-xl ">password</label>
+                    <input type="text" name="password" id="signUp-password"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col gap-2 row-end-9 relative left-[3.5vw]">
+                    <label for="password-confirmation" class="w-[25vw] text-xl">password confirmation</label>
+                    <input type="text" name="password-confirmation" id="password-confirmation"
+                        class="border-gray-300 border-[1px] rounded w-[20vw] h-10 focus:outline-none px-2 focus:border-gray-500">
+                </div>
+            </div>
+            <p class="row-end-13 col-end-3 text-center">already have an account?<a href="login.html"
+                    class="text-blue-900 font-bold">Login</a></p>
+
+            <div class="row-end-15 flex justify-evenly col-span-3">
+                <button
+                    class="bg-green-300 w-[25%] py-[2%] rounded hover:shadow-[0px_0px_10px_gray] hover:translate-y-[-2px] hover:bg-white hover:text-green-500 transition-all active:translate-y-[0] active:shadow-none"
+                    onclick="storeInfos()">Confirmer</button>
+                <button
+                    class="bg-red-300 w-[25%] py-[2%] rounded hover:shadow-[0px_0px_10px_gray] hover:translate-y-[-2px] hover:bg-white hover:text-red-500 transition-all active:translate-y-[0] active:shadow-none">Annuleé</button>
+            </div>
+        </div>
+    </main>
+    <section class=" lg:hidden container2 overflow-hidden">
+        <header class="relative h-[30vh] flex items-center justify-center overflow-hidden">
+            <!-- Background video -->
+            <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                <source src="/assets/4954761_Coll_halloween_Dusty_6144x3456.mp4" type="video/mp4" />
+            </video>
+
+            <!-- Dark overlay -->
+            <div class="absolute inset-0 bg-black/40"></div>
+
+            <!-- Text -->
+            <h1 class="relative text-white text-3xl text-center w-[80%] font-bold z-10 mt-25">
+                Welcome to our Login page
+            </h1>
+        </header>
+        <main
+            class="h-[100vh] w-[100vw] bg-linear-to-tr from-[rgb(0,74,119)] to-[rgb(69,165,224)] flex items-center justify-center ">
+            <div class="pt-5 h-[90%] w-[80%] bg-white grid grid-rows-16 rounded-lg">
+                <div class="flex flex-col items-center gap-2 w-[100%] row-end-2">
+                    <label for="fullName" class=" w-[80%]">Full Name</label>
+                    <input type="text" name="fullName" id="phone-fullName"
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col items-center gap-2 w-[100%] row-end-5 row-span-2">
+                    <label for="CIN" class=" w-[80%]">CIN</label>
+                    <input type="text" name="CIN" id="phone-CIN"
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col items-center gap-2 w-[100%] row-end-7 row-span-2">
+                    <label for="Telephone" class=" w-[80%]">Telephone</label>
+                    <input type="text" name="Telephone" id="phone-Telephone"
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col items-center gap-2 w-[100%] row-end-9 row-span-2">
+                    <label for="Sign-email" class=" w-[80%]">Email</label>
+                    <input type="text" name="Sign-email" id="phone-Sign-email"
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
+                </div>
+                <div class="flex flex-col items-center gap-2 row-end-11 row-span-2">
+                    <label for="signUp-password" class="w-[80%]">password</label>
+                    <input type="text" name="signUp-password" id="phone-signUp-password"
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
+                </div>
+                <div class="row-end-12 flex flex-col ml-8 gap-3 font-semibold">
+                    <h1><input type="checkbox" class="text-blue-500 accent-blue-500" name="remembre" id="remembre">
+                        Remembre me</h1>
+                    <h1 class="ml-4">Forget password?</h1>
+                    <h1 class="ml-4">Don't have an account? <a href="signup.html"
+                            class="text-blue-900 font-bold">SignUp</a></h1>
+                </div>
+                <div class="row-end-16 flex justify-evenly">
+                    <button
+                        class="bg-[rgb(0,157,255)] w-[40%] py-[2%] rounded transition-all shadow-[inset_4px_4px_4px_rgb(0,0,0,0.4),4px_4px_4px_rgb(0,0,0,0.4)]  active:translate-y-[1px] active:shadow-none flex justify-center items-center font-semibold"
+                        onclick="storeInfos()">Confirmer</button>
+                    <button
+                        class="bg-[rgb(123,204,255)] w-[40%] py-[2%] rounded transition-all active:translate-y-[1px] active:shadow-none flex justify-center items-center shadow-[inset_4px_4px_4px_rgb(0,0,0,0.4),4px_4px_4px_rgb(0,0,0,0.4)] font-semibold">Annuleé</button>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="signUp.js"></script>
+</body>
+
+
+</html>
