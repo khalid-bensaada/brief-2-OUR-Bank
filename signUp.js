@@ -46,7 +46,7 @@ function storeInfos() {
       Swal.fire({
         title: "your login was seccessful",
         icon: "success",
-        confirmButtonText: "Try Again",
+        confirmButtonText: "Ok",
         background: "#fff",
         scrollbarPadding: false,
         allowEscapeKey: true,
@@ -57,17 +57,19 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
+          dateDeSignup : `${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()}`
         };
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
         let a = document.createElement("a");
         a.href = "login.html";
-        console.log("t9wd");
         emailjs.send("service_qnkj0xs", "template_e6ij7x9", {
           name: person.fullName,
           email: person.email,
         });
       });
+      window.location.href = "login.html";
+
     } else {
       Swal.fire({
         title: "please enter valid infos",
