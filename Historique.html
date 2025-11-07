@@ -10,39 +10,85 @@
 </head>
 
 <body class="static bg-linear-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] h-screen">
-    <main class=" w-[90%] h-[90vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white flex justify-between">
+    <main
+        class=" w-[90%] h-screen absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white flex justify-between">
         <nav class=" w-[15%] h-full p-[1%] bg-black">
-            
+
             <ul class=" h-full grid grid-cols-3 grid-rows-16 justify-center">
-                <li class="row-end-1 col-span-3 text-center"><img src="/assets/OIP_10-removebg-preview.png" alt="Logo image"></li>
+                <li class="row-end-1 col-span-3 text-center"><img src="/assets/OIP_10-removebg-preview.png"
+                        alt="Logo image"></li>
                 <li class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Home</a></li>
                 <li class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Historique</a></li>
                 <li class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Cards</a></li>
-                <li class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Factures & Recharge</a></li>
+                <li class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Factures & Recharge</a>
+                </li>
                 <li class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Transactions</a></li>
                 <li class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Profile</a></li>
             </ul>
         </nav>
         <section class="w-[85%] p-[1%] flex flex-col gap-3">
-            <h1>Historique des Transactions</h1>
+            <h1 class="font-semibold font-mono">Historique and Transactions</h1>
             <div class="flex w-[40%] justify-between">
-                <button class="border-gray-300 border-1 w-[20%] py-[2%]">Tout</button>
-                <button class="border-gray-300 border-1 w-[20%] py-[2%]">Virements</button>
-                <button class="border-gray-300 border-1 w-[20%] py-[2%]">Paiments</button>
-                <button class="border-gray-300 border-1 w-[20%] py-[2%]">Recharge</button>
+                <button
+                    class="border-gray-300 border-1 w-[20%] py-[2%] bg-linear-to-t from-[rgb(0,74,120)] to-[rgb(123,205,255)] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md text-white">Tout</button>
+                <button
+                    class="border-gray-300 border-1 w-[20%] py-[2%] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md">Virements</button>
+                <button
+                    class="border-gray-300 border-1 w-[20%] py-[2%] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md">Paiments</button>
+                <button
+                    class="border-gray-300 border-1 w-[20%] py-[2%] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md">Recharge</button>
             </div>
-            <label for="Date">Date:</label>
-            <select name="Date" id="Date"></select>
+            <label for="Date">La Date:</label>
+            <select name="Date" id="Date"
+                class="border-1 border-gray-400  w-[6vw] h-[6vh] rounded-lg shadow-[4px_4px_4px_rgb(0,0,0,0.2)]">
+                <option value="" class="text-center ">Date</option>
+                <option value="Novembre" class="text-center">Novembre</option>
+                <option value="Octobre" class="text-center">Octobre</option>
+                <option value="Juin" class="text-center ">Juin</option>
+            </select>
             <div>
-                <div class="border-black border-2">
-                    <h1></h1>
-                    <img src="/assets/Frame 37.svg"></img>
+                <div class="border-black border-2 h-[7vh]  overflow-hidden transition-all duration-1000 ease-in-out" id="Historique">
+                    <h1 class="pl-2 pt-2">Novembre 2025</h1><br>
+                    <div class="border-b-1">
+                        <div class="flex gap-2 items-center">
+                            <img src="/assets/Frame 37.svg">
+                            <h1 class="font-semibold">Virements</h1>
+                        </div>
+                        <div class="pl-[3.3vw] flex flex-col gap-2">
+                            <p class="text-sm text-gray-500">Vers: mohamed</p>
+                            <p class="text-sm text-gray-500">Date:--/--/----</p>
+                            <p class="text-sm text-gray-500">Ref: 123456789</p>
+                        </div><br>
+                    </div>
+                    <div class="border-b-1">
+                        <div class="flex gap-2 items-center">
+                            <img src="/assets/Frame 37.svg">
+                            <h1 class="font-semibold">Virements</h1>
+                        </div>
+                        <div class="pl-[3.3vw] flex flex-col gap-2">
+                            <p class="text-sm text-gray-500">Vers: mohamed</p>
+                            <p class="text-sm text-gray-500">Date:--/--/----</p>
+                            <p class="text-sm text-gray-500">Ref: 123456789</p>
+                        </div><br>
+                    </div>
+                    <div class="border-b-1">
+                        <div class="flex gap-2 items-center">
+                            <img src="/assets/Frame 37.svg">
+                            <h1 class="font-semibold">Virements</h1>
+                        </div>
+                        <div class="pl-[3.3vw] flex flex-col gap-2">
+                            <p class="text-sm text-gray-500">Vers: mohamed</p>
+                            <p class="text-sm text-gray-500">Date:--/--/----</p>
+                            <p class="text-sm text-gray-500">Ref: 123456789</p>
+                        </div><br>
+                    </div>
                 </div>
                 <div></div>
                 <div></div>
             </div>
         </section>
     </main>
+    <script src="main.js"></script>
 </body>
 
 </html>

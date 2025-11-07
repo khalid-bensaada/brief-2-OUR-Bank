@@ -57,11 +57,45 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup : `${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()}`,
-          RIBprincipale: `1079 ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} 0005`,
-          RIBepargne: `1079 ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} 0005`
+          dateDeSignup: `${new Date().getFullYear()}/${
+            new Date().getMonth() + 1
+          }/${new Date().getDate()}`,
+          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} 0005`,
+          RIBepargne: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} 0005`,
         };
-        console.log(person.RIBepargne)
+        console.log(person.RIBepargne);
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
         let a = document.createElement("a");
@@ -72,7 +106,6 @@ function storeInfos() {
         });
       });
       // window.location.href = "login.html";
-
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -82,7 +115,7 @@ function storeInfos() {
     }
   }
 }
-console.log(document.querySelector(".container1"))
+console.log(document.querySelector(".container1"));
 function validateInfos() {
   const isMobile =
     window.getComputedStyle(document.querySelector(".container2")).display !==
@@ -92,15 +125,14 @@ function validateInfos() {
   );
   const email = document.querySelector(isMobile ? "#phone-email" : "#email");
 
-
   console.log(email.value);
-  console.log(password.value)
+  console.log(password.value);
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
-  console.log(arr)
+  console.log(arr);
   const found = arr.find(
     (info) => info.email === email.value && info.password === password.value
   );
-  console.log(found)
+  console.log(found);
 
   if (found) {
     Swal.fire({
@@ -122,3 +154,10 @@ function validateInfos() {
       "it should be 8 letters at least and at least 1 upper or lower case caracter";
   }
 }
+
+const drop = document.getElementById('Historique');
+
+drop.addEventListener('click', () => {
+  drop.classList.toggle('h-[67vh]');
+  drop.classList.toggle('h-[6vh]');
+});
