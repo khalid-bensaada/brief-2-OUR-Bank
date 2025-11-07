@@ -57,8 +57,11 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup : `${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()}`
+          dateDeSignup : `${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()}`,
+          RIBprincipale: `1079 ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} 0005`,
+          RIBepargne: `1079 ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} ${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)}${Math.floor(Math.random()*9)} 0005`
         };
+        console.log(person.RIBepargne)
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
         let a = document.createElement("a");
@@ -68,7 +71,7 @@ function storeInfos() {
           email: person.email,
         });
       });
-      window.location.href = "login.html";
+      // window.location.href = "login.html";
 
     } else {
       Swal.fire({
