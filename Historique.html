@@ -10,29 +10,34 @@
 </head>
 
 <body class="static bg-linear-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] h-screen">
-    <main class=" w-[90%] h-[90vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white">
+    <main class=" w-[90%] h-[90vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white flex justify-between">
         <nav class=" w-[15%] h-full p-[1%] bg-black">
+            
             <ul class=" h-full grid grid-cols-3 grid-rows-16 justify-center">
-                <li class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Home</a></li>
-                <li class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Historique</a></li>
-                <li class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Cards</a></li>
-                <li class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Factures & Recharge</a></li>
-                <li class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Transactions</a></li>
-                <li class="row-end-15 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Profile</a></li>
+                <li class="row-end-1 col-span-3 text-center"><img src="/assets/OIP_10-removebg-preview.png" alt="Logo image"></li>
+                <li class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Home</a></li>
+                <li class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Historique</a></li>
+                <li class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Cards</a></li>
+                <li class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Factures & Recharge</a></li>
+                <li class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Transactions</a></li>
+                <li class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)]"><a href="">Profile</a></li>
             </ul>
         </nav>
-        <section>
+        <section class="w-[85%] p-[1%]">
             <h1>Historique des Transactions</h1>
-            <div>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
+            <div class="flex border-black border-2 w-[40%] justify-between">
+                <button class="border-black border-2 w-[20%]">Tout</button>
+                <button class="border-black border-2 w-[20%]">Virements</button>
+                <button class="border-black border-2 w-[20%]">Paiments</button>
+                <button class="border-black border-2 w-[20%]">Recharge</button>
             </div>
             <label for="Date">Date:</label>
             <select name="Date" id="Date"></select>
             <div>
-                <div></div>
+                <div class="border-black border-2">
+                    <h1></h1>
+                    <img src="/assets/Frame 37.svg"></img>
+                </div>
                 <div></div>
                 <div></div>
             </div>
