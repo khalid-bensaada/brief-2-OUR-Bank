@@ -77,7 +77,7 @@ function storeInfos() {
     }
   }
 }
-
+console.log(document.querySelector(".container1"))
 function validateInfos() {
   const isMobile =
     window.getComputedStyle(document.querySelector(".container2")).display !==
@@ -87,11 +87,15 @@ function validateInfos() {
   );
   const email = document.querySelector(isMobile ? "#phone-email" : "#email");
 
+
   console.log(email.value);
+  console.log(password.value)
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
+  console.log(arr)
   const found = arr.find(
     (info) => info.email === email.value && info.password === password.value
   );
+  console.log(found)
 
   if (found) {
     Swal.fire({
@@ -99,7 +103,7 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      window.location.href = "home.html";
+      // window.location.href = "home.html";
     });
   } else {
     email.value = "";
