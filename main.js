@@ -155,10 +155,10 @@ function validateInfos() {
   }
 }
 
-const drops = document.querySelectorAll('.Historique');
+const dropdown = document.querySelectorAll('.dropdown');
 let arrow = document.getElementById('arrow')
 
-drops.forEach(drop => {
+dropdown.forEach(drop => {
   drop.addEventListener('click', () => {
   drop.classList.toggle('h-[83.5vh]');
   drop.classList.toggle('h-[6vh]');
