@@ -9,9 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="static bg-linear-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] h-screen">
+<body class="static bg-linear-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] h-[150vh] py-10">
     <main
-        class=" w-[90%] h-screen absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white flex justify-between">
+        class=" w-[90%] h-[130vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white flex justify-between">
         <nav class=" w-[15%] h-full p-[1%] bg-black">
 
             <ul class=" h-full grid grid-cols-3 grid-rows-16 justify-center">
@@ -47,9 +47,11 @@
                 <option value="Juin" class="text-center ">Juin</option>
             </select>
             <div>
-                <div class="border-black border-2 h-[7vh]  overflow-hidden transition-all duration-1000 ease-in-out" id="Historique">
-                    <h1 class="pl-2 pt-2">Novembre 2025</h1><br>
-                    <div class="border-b-1">
+                <div
+                    class="border-gray-400 border-2 h-[7vh] overflow-hidden rounded-2xl transition-all duration-1000 ease-in-out Historique">
+                    <h1 class="pl-2 pt-2 flex justify-between">Novembre 2025 <img src="/assets/icon.svg" alt=""
+                            class="pr-2 transition-all duration-1000 ease-in-out" id="arrow"></h1><br>
+                    <div class="border-b-1 pl-2">
                         <div class="flex gap-2 items-center">
                             <img src="/assets/Frame 37.svg">
                             <h1 class="font-semibold">Virements</h1>
@@ -58,33 +60,46 @@
                             <p class="text-sm text-gray-500">Vers: mohamed</p>
                             <p class="text-sm text-gray-500">Date:--/--/----</p>
                             <p class="text-sm text-gray-500">Ref: 123456789</p>
-                        </div><br>
-                    </div>
-                    <div class="border-b-1">
+                        </div>
+                        <h1 class="text-red-500 w-full flex justify-end pr-2 text-lg font-semibold">100.00 MAD</h1>
+
+                        <br>
+                    </div><br>
+                    <div class="border-b-1 pl-2">
                         <div class="flex gap-2 items-center">
-                            <img src="/assets/Frame 37.svg">
+                            <img src="/assets/Ellipse 1.svg">
                             <h1 class="font-semibold">Virements</h1>
                         </div>
                         <div class="pl-[3.3vw] flex flex-col gap-2">
                             <p class="text-sm text-gray-500">Vers: mohamed</p>
                             <p class="text-sm text-gray-500">Date:--/--/----</p>
                             <p class="text-sm text-gray-500">Ref: 123456789</p>
-                        </div><br>
+                        </div>
+                        <h1 class="text-green-500 w-full flex justify-end pr-2 text-lg font-semibold">100.00 MAD</h1>
+
+                        <br>
                     </div>
-                    <div class="border-b-1">
+
+                    <br>
+                    <div class="border-b-1 pl-2 relative">
                         <div class="flex gap-2 items-center">
-                            <img src="/assets/Frame 37.svg">
-                            <h1 class="font-semibold">Virements</h1>
+                            <img src="/assets/Frame 38.svg">
+                            <h1 class="font-semibold">Recharge</h1>
                         </div>
                         <div class="pl-[3.3vw] flex flex-col gap-2">
                             <p class="text-sm text-gray-500">Vers: mohamed</p>
                             <p class="text-sm text-gray-500">Date:--/--/----</p>
                             <p class="text-sm text-gray-500">Ref: 123456789</p>
-                        </div><br>
+                        </div>
+                        <h1 class="text-orange-400 w-full flex justify-end pr-2 text-lg font-semibold">100.00 MAD</h1>
+                        <br>
                     </div>
+                </div><br>
+
+                <div
+                    class="border-gray-400 border-2 h-[7vh]  overflow-hidden rounded-2xl transition-all duration-1000 ease-in-out Historique">
+                    <h1 class="pl-2 pt-2">Octobre 2025</h1><br>
                 </div>
-                <div></div>
-                <div></div>
             </div>
         </section>
     </main>

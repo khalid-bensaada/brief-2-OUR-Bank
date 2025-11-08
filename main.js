@@ -155,9 +155,13 @@ function validateInfos() {
   }
 }
 
-const drop = document.getElementById('Historique');
+const drops = document.querySelectorAll('.Historique');
+let arrow = document.getElementById('arrow')
 
-drop.addEventListener('click', () => {
-  drop.classList.toggle('h-[67vh]');
+drops.forEach(drop => {
+  drop.addEventListener('click', () => {
+  drop.classList.toggle('h-[83.5vh]');
   drop.classList.toggle('h-[6vh]');
+  arrow.classList.toggle('rotate-x-180')
 });
+})
