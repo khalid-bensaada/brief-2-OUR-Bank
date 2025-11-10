@@ -1,3 +1,4 @@
+
 console.log("kkkkkk");
 
 function storeInfos() {
@@ -44,22 +45,59 @@ function storeInfos() {
         console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
 
   if (
-    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)||
-    !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/)||
-    !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
-    !phone.value.match(/^06\d{8}$/) ||
-    !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
-  ) {
-    Swal.fire({
-      title: "Invalid informations!",
-      text: "Please enter valid informations",
-      icon: "error",
-      confirmButtonText: "Try Again",
-      background: "#fff",
-      scrollbarPadding: false,
-      allowEscapeKey: true,
-    });
+  !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
+  !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
+  !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
+  !phone.value.match(/^06\d{8}$/) ||
+  !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
+) {
+  Swal.fire({
+    title: "Invalid informations!",
+    text: "Please enter valid informations",
+    icon: "error",
+    confirmButtonText: "Try Again",
+    background: "#fff",
+    scrollbarPadding: false,
+    allowEscapeKey: true,
+  });
+
+  // full name validation
+  if (!fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)) {
+    document.getElementById('warning1').textContent = 'Name must be like Mohamed Attefi';
   } else {
+    document.getElementById('warning1').textContent = '';
+  }
+
+  // email validation
+  if (!SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/)) {
+    document.getElementById('warning2').textContent = 'Email must be a valid Gmail address (e.g. example@gmail.com)';
+  } else {
+    document.getElementById('warning2').textContent = '';
+  }
+
+  // password validation
+  if (!signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/)) {
+    document.getElementById('warning3').textContent =
+      'Password must contain at least 8 characters, one uppercase, one lowercase, and one digit';
+  } else {
+    document.getElementById('warning3').textContent = '';
+  }
+
+  // phone validation
+  if (!phone.value.match(/^06\d{8}$/)) {
+    document.getElementById('warning4').textContent = 'Phone number must start with 06 and contain 10 digits';
+  } else {
+    document.getElementById('warning4').textContent = '';
+  }
+
+  // CIN validation
+  if (!CIN.value.match(/^[A-Z]{1,2}\d{4}$/)) {
+    document.getElementById('warning5').textContent = 'CIN must be like AB1234 or A1234';
+  } else {
+    document.getElementById('warning5').textContent = '';
+  }
+}
+else {
     if (signPassword.value == passwordConfirmation.value) {
       Swal.fire({
         title: "your login was seccessful",
@@ -105,10 +143,11 @@ function storeInfos() {
           name: person.fullName,
           email: person.email,
         });
-      });
-      setTimeout(()=>{
+        setTimeout(()=>{
         window.location.href = "login.html";
       },1000)
+      });
+      
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -156,9 +195,19 @@ function validateInfos() {
       icon: "error",
       confirmButtonText: "Try Again",
     });
-    document.getElementById("warning").innerText =
-      "it should be 8 letters at least and at least 1 upper or lower case caracter";
+    
   }
+}
+
+
+function annuleSignup(){
+  Swal.fire({
+      title: "Are you sure you want to Quit?",
+      icon: "question",
+      confirmButtonText: "yes",
+      cancelButton: true,
+      
+    });
 }
 
 function toggleMobileDropdown(id) {
