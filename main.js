@@ -20,21 +20,37 @@ function storeInfos() {
   );
   const passwordConfirmation = document.querySelector("#password-confirmation");
 
-  console.log("mmmmmmmmm");
   const userInfo = localStorage.getItem("infos")
     ? JSON.parse(localStorage.getItem("infos"))
     : [];
+
+    const found = userInfo.find(
+    (info) => info.email === SignEmail.value || info.fullName === fullName.value || info.CIN === CIN.value || info.telephone === phone.value 
+  );
+
+  if(found){
+    Swal.fire({
+      title: "something you entered already exist",
+      text: "Please enter valid informations",
+      icon: "error",
+      confirmButtonText: "Try Again",
+      background: "#fff",
+      scrollbarPadding: false,
+      allowEscapeKey: true,
+    });
+    return
+  }
+
+    
   if (
     !SignEmail.value.match(/@gmail.com/g) ||
-    !signPassword.value.match(
-      /^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/
-    ) ||
+    !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
     !phone.value.match(/^06\d{8}$/) ||
     !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
   ) {
     Swal.fire({
       title: "Invalid informations!",
-      text: "Please check your email and password.",
+      text: "Please enter valid informations",
       icon: "error",
       confirmButtonText: "Try Again",
       background: "#fff",
@@ -60,23 +76,7 @@ function storeInfos() {
           dateDeSignup: `${new Date().getFullYear()}/${
             new Date().getMonth() + 1
           }/${new Date().getDate()}`,
-          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )}${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )} ${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )}${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )} ${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )}${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )} ${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )}${Math.floor(Math.random() * 9)}${Math.floor(
-            Math.random() * 9
-          )} 0005`,
+          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} 0005`,
           RIBepargne: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -98,14 +98,13 @@ function storeInfos() {
         console.log(person.RIBepargne);
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
-        let a = document.createElement("a");
-        a.href = "login.html";
+        
         emailjs.send("service_qnkj0xs", "template_e6ij7x9", {
           name: person.fullName,
           email: person.email,
         });
       });
-      // window.location.href = "login.html";
+      window.location.href = "login.html";
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -155,13 +154,13 @@ function validateInfos() {
   }
 }
 
-const dropdown = document.querySelectorAll('.dropdown');
-let arrow = document.getElementById('arrow')
+const dropdown = document.querySelectorAll(".dropdown");
+let arrow = document.getElementById("arrow");
 
-dropdown.forEach(drop => {
-  drop.addEventListener('click', () => {
-  drop.classList.toggle('h-[83.5vh]');
-  drop.classList.toggle('h-[6vh]');
-  arrow.classList.toggle('rotate-x-180')
+dropdown.forEach((drop) => {
+  drop.addEventListener("click", () => {
+    drop.classList.toggle("h-[83.5vh]");
+    drop.classList.toggle("h-[6vh]");
+    arrow.classList.toggle("rotate-x-180");
+  });
 });
-})

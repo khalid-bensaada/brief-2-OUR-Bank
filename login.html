@@ -14,9 +14,10 @@
         background-color: rgba(0, 0, 0, 0.9) !important;
     }
 </style>
-<body
-    class="flex relative justify-center items-center border-black border-2 w-[100%] h-[100VH] bg-[rgb(69,165,224)]">
-    <main class=" hidden lg:flex w-[80%] h-[80%] rounded-2xl overflow-hidden flex bg-white container1 shadow-[0px_0px_15px_black]">
+
+<body class="flex relative justify-center items-center border-black border-2 w-[100%] h-[100VH] bg-[rgb(69,165,224)]">
+    <main
+        class=" hidden lg:flex w-[80%] h-[80%] rounded-2xl overflow-hidden flex bg-white container1 shadow-[0px_0px_15px_black]">
         <div class="relative w-2/5 h-full flex flex-col justify-center items-center text-center overflow-hidden">
             <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
                 <source src="/assets/4954761_Coll_halloween_Dusty_6144x3456.mp4" type="video/mp4" />
@@ -33,14 +34,16 @@
             <div class="flex flex-col gap-2 row-end-5">
                 <label for="email" class="text-xl w-[19vw]">Email</label>
                 <input type="text" name="email" id="email"
-                    class="border-gray-300 border-[1px] rounded w-[30vw] h-10 focus:outline-none px-2 focus:border-gray-500" title="example@gmail.com">
+                    class="border-gray-300 border-[1px] rounded w-[30vw] h-10 focus:outline-none px-2 focus:border-gray-500"
+                    title="example@gmail.com">
             </div>
             <div class="flex flex-col gap-2 row-end-9">
                 <label for="password" class="w-[19vw] text-xl">password</label>
                 <input type="text" name="password" id="password"
-                    class="border-gray-300 border-[1px] rounded w-[30vw] h-10 focus:outline-none px-2 focus:border-gray-500" title="it should be 8 letters at least and at least 1 upper or lower case caracter">
+                    class="border-gray-300 border-[1px] rounded w-[30vw] h-10 focus:outline-none px-2 focus:border-gray-500"
+                    title="it should be 8 letters at least and at least 1 upper or lower case caracter">
                 <p id="warning" class="text-red-500 text-xs"></p>
-                </div>
+            </div>
             <div class="row-end-12 flex flex-col gap-3">
                 <h1><input type="checkbox" class="text-blue-500 accent-blue-500" name="remembre" id="remembre"> Remembre
                     me</h1>
@@ -58,8 +61,16 @@
     </main>
 
     <section class="lg:hidden overflow-hidden container2">
-        <header class="h-[30vh] w-[100vw] bg-black flex items-center justify-center">
-            <h1 class="text-white text-3xl text-center w-[70%] font-bold">Welcome to our Login page</h1>
+        <header class="relative h-[30vh] flex items-center justify-center overflow-hidden">
+            <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                <source src="/assets/4954761_Coll_halloween_Dusty_6144x3456.mp4" type="video/mp4" />
+            </video>
+
+            <div class="absolute inset-0 bg-black/40"></div>
+
+            <h1 class="relative text-white text-3xl text-center w-[80%] font-bold z-10 mt-25">
+                Welcome to our Login page
+            </h1>
         </header>
         <main
             class="h-[80vh] bg-linear-to-tr from-[rgb(0,74,119)] to-[rgb(69,165,224)] flex items-center justify-center ">
@@ -67,10 +78,10 @@
                 <div class="flex flex-col items-center gap-2 w-[100%] row-end-4 row-span-2">
                     <label for="email" class="text-xl w-[80%]">Email</label>
                     <input type="text" name="email" id="phone-email"
-                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500" >
+                        class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
                 </div>
                 <div class="flex flex-col items-center gap-2 row-end-7 row-span-2">
-                    <label for="password" class="text-xl w-[80%]" >password</label>
+                    <label for="password" class="text-xl w-[80%]">password</label>
                     <input type="text" name="password" id="phone-password"
                         class="border-gray-300 border-[1px] rounded w-[80%] focus:outline-none px-1 focus:border-gray-500">
                 </div>
