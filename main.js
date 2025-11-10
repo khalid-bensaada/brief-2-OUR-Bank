@@ -51,6 +51,7 @@ function storeInfos() {
   !phone.value.match(/^06\d{8}$/) ||
   !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
 ) {
+  
   Swal.fire({
     title: "Invalid informations!",
     text: "Please enter valid informations",
