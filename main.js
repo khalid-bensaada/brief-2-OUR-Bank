@@ -41,9 +41,11 @@ function storeInfos() {
     return
   }
 
-    
+        console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
+
   if (
-    !SignEmail.value.match(/@gmail.com/g) ||
+    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)||
+    !SignEmail.value.match(/@gmail.com$/) ||
     !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
     !phone.value.match(/^06\d{8}$/) ||
     !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
@@ -104,7 +106,7 @@ function storeInfos() {
           email: person.email,
         });
       });
-      window.location.href = "login.html";
+      window.location.href = "home.html";
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -139,7 +141,7 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      // window.location.href = "home.html";
+      window.location.href = "home.html";
     });
   } else {
     email.value = "";
