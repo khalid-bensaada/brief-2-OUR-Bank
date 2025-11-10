@@ -10,19 +10,19 @@
         <title>YCD_Bank</title>
     </head>
 
-    <body class="bg-[#45A5E0] w-[100vw] h-[100vh]">
+    <body class="bg-[#45A5E0] w-[100vw] h-[100vh] ">
         <div class="w-[100%] h-[100%] flex justify-center items-center">
-            <div class="bg-[#FFFFFF] w-[90%] h-[90%] rounded-3xl flex">
+            <div class="bg-[#FFFFFF] w-[90%] h-full rounded-3xl flex">
                 <header class="bg-black w-[15%] h-full rounded-l-3xl"></header>
                 <div class="w-full h-full">
                     <div class="p-4  border grid grid-cols-2">
                         <div class="">
 
-                            <div class="flex justify-center items-center bg-black h-10 w-40 mb-15 rounded-sm ">
+                            <div class="flex justify-center items-center bg-black h-10 w-40  rounded-sm ">
                                 <h2 class=" text-[#FFFFFF]">Recharge</h2>
                             </div>
                             <div
-                                class="flex flex-col items-start  gap-5 ">
+                                class="flex flex-col items-start  gap-5 mr-6 ">
                                 <div><button class="hover:text-yellow-700">Orange</button></div>
                                 <div><button>IAM</button></div>
                                 <div><button>Inwi</button></div>
@@ -122,122 +122,4 @@
             </div>
         </div>
     </body>
-
-    <!-- <body class="bg-[#45A5E0] flex justify-center items-center w-[100vw] h-[100vh]">
-        <div class="bg-[#FFFFFF] w-[90%] h-[90%] flex flex-col border">
-            <header class=" bg-black w-[15%] h-[900px] rounded-tl-[50px] rounded-bl-[50px]"></header>
-            <div class="p-4 rounded-t-lg border-2">
-                    <div class="">
-
-                        <div class="flex justify-center items-center bg-black h-10 w-40 mb-15 rounded-sm ">
-                            <h2 class=" text-[#FFFFFF]">Recharge</h2>
-                        </div>
-                        <div
-                            class="flex flex-col items-start  gap-5 ">
-                            <div><button>Orange</button></div>
-                            <div><button>IAM</button></div>
-                            <div><button>Inwi</button></div>
-                        </div>
-                    </div>
-                    <div class="border border-2 rounded-sm w-[600px]  p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-black text-base shadow-lg ">
-                        <form action>
-                            <div class="flex flex-row  justify-evenly my-6 gap-6 ">
-                                <div>
-                                    <div>
-                                        <label for="numéro">Phone number</label>
-                                    </div>
-                                    <div  class="border-2 rounded-lg bg-white" >
-                                        <input type="number" name="numéro"
-                                            placeholder="+212...">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <label for>Price</label>
-                                    </div>
-                                    <div  class="border-2 rounded-lg bg-white">
-                                        <select>
-                                            <option value>10DH</option>
-                                            <option value>20DH</option>
-                                            <option value>50DH</option>
-                                            <option value>100DH</option>
-                                            <option value>150DH</option>
-                                            <option value>200DH</option>
-                                            <option value>250DH</option>
-                                            <option value>300DH</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <label for>Type</label>
-                                    </div>
-                                    <div  class="border-2 rounded-lg bg-white">
-                                        <select>
-                                            <option value>internet</option>
-                                            <option value>recharge</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div><label for>Date</label></div>
-                                    <div class="border-2 rounded-lg bg-white mx-"><input type="date" name="Date"
-                                            placeholder></div>
-                                </div>
-                            </div>
-                            <div class="m-6 flex justify-center bg-white hover:bg-blue-400 text-black px-4 py-2 rounded-lg cursor-pointer md:w-20 md:ml-60 md:mt-20 "><button>Add</button></div>
-
-                        </form>
-                    </div>
-                </div>
-
-                <div class=" ">
-                    <div>
-                        <div
-                            class="flex justify-center items-center bg-black h-10 w-48 rounded-sm">
-                            <h2 class=" text-[#FFFFFF]">Invoice</h2>
-                        </div>
-                        <div
-                            class="flex flex-row justify-evenly items-center gap-50">
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Electricity</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Water</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Car insurance</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Tax</button>
-                        </div>
-                    </div>
-                    <div class="border border-2 rounded-sm w-[600px] p-6 bg-gradient-to-t from-sky-500 to-indigo-500 text-black text-base shadow-lg">
-                         <form action>
-                        <div class="flex flex-row  justify-evenly my-6 gap-6 ">
-                           
-
-                            <div>
-                                <div><label for="contrat">N° Contrat</label></div>
-                                <div class="border-2 rounded-lg bg-white"><input type="number" name="Contrat" placeholder="123456"></div>
-                            </div>
-                            <div>
-                                <div><label for="amount">Amount</label></div>
-                                <div  class="border-2 rounded-lg bg-white"><input type="number" name="Amount"></div>
-                            </div>
-
-                            <div class>
-                                <div class><label for="date">Date</label></div>
-                                <div class="border-2 rounded-lg bg-white "><input  type="date" name="Date"></div>
-                            </div>
-                        </form>
-                        </div>
-                        <div class="flex flex-row justify-evenly">
-                            <button class="border-2 rounded-lg  py-2 px-4 bg-green-300">pay</button>
-                            <button class="border-2 rounded-lg py-2 px-4 bg-red-300">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-           
-        </div>
-
-    </body> -->
-
-</html>
+   
