@@ -16,7 +16,7 @@
         <nav class="w-[15%] min-h-[130vh] p-[1%] bg-black">
             <ul class="h-full grid grid-cols-3 grid-rows-16 justify-center gap-4">
                 <li class="row-end-1 col-span-3 text-center">
-                    <img src="/assets/OIP_10-removebg-preview.png" alt="">
+                    <img src="/images/OIP_10-removebg-preview.png" alt="">
                 </li>
                 <li
                     class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
@@ -93,7 +93,7 @@
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/assets/Frame 37.svg" alt="">
+                                    <img src="/images/Frame 37.svg" alt="">
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="font-semibold">Virements</h3>
@@ -109,7 +109,7 @@
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/assets/Ellipse 1.svg" alt="">
+                                    <img src="/images/Ellipse 1.svg" alt="">
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="font-semibold">Virements</h3>
@@ -125,7 +125,7 @@
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/assets/Frame 38.svg" alt="">
+                                    <img src="/images/Frame 38.svg" alt="">
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="font-semibold">Recharge</h3>
@@ -162,9 +162,9 @@
 
     <section class="lg:hidden bg-gray-50 min-h-screen">
         <header class="flex justify-around ">
-            <img src="/assets/User.svg" alt="">
+            <img src="/images/User.svg" alt="">
             <span class="bg-[rgb(37,37,37)] text-white flex items-center justify-center w-[50%] rounded-b-lg text-2xl font-bold py-5 shadow-[0_8px_4px_gray] text-shadow-[3px_3px_2px_black]">Historique</span>
-            <img src="/assets/Icon (1).svg" alt="">
+            <img src="/images/Icon (1).svg" alt="">
         </header>
 
         <div class="px-4 py-3 bg-white border-b mt-5">
@@ -304,68 +304,23 @@
         <nav class="fixed bottom-0 left-0 right-0 bg-black text-white py-3 z-50">
             <div class="flex items-center justify-around">
                 <button class="flex flex-col items-center p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
+                    <img src="/images/Group 24.svg" alt="">
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                    </svg>
+                    <img src="/images/Group 25.svg" alt="">
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+                    <img src="/images/Group 26.svg" alt="">
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <img src="/images/Group 27 (1).svg" alt="">
                 </button>
             </div>
         </nav>
     </section>
 
     <script>
-        function toggleMobileDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const arrow = document.getElementById('arrow' + id.slice(-1));
-
-            if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
-                dropdown.style.maxHeight = '0px';
-                arrow.style.transform = 'rotate(0deg)';
-            } else {
-                dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-                arrow.style.transform = 'rotate(180deg)';
-            }
-        }
-        function toggleDesktopDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const content = dropdown.querySelector('.desktop-content');
-            const arrowId = id.replace('desktopDropdown', 'desktopArrow');
-            const arrow = document.getElementById(arrowId);
-
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                content.style.display = 'none';
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.innerWidth < 1024) {
-                const dropdown1 = document.getElementById('dropdown1');
-                if (dropdown1) {
-                    dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
-                }
-            }
-        });
+        
     </script>
 </body>
 
