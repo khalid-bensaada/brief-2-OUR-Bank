@@ -11,24 +11,54 @@
     </head>
 
     <body class="bg-[#45A5E0] w-[100vw] h-[100vh] ">
-        <div class="w-[100%] h-[100%] flex justify-center items-center">
-            <div class="bg-[#FFFFFF] w-[90%] h-full rounded-3xl flex">
-                <header class="bg-black w-[15%] h-full rounded-l-3xl"></header>
+        <div class="w-[100%] h-[900px] flex justify-center items-center">
+             <div class="bg-[#FFFFFF] w-[90%] h-full rounded-3xl flex mt-20 ">
+                       <nav class="w-[15%] min-h-[100vh] p-[1%] bg-black">
+            <ul class="h-full grid grid-cols-3 grid-rows-16 justify-center gap-4">
+                <li class="row-end-1 col-span-3 text-center">
+                    <img src="/images/OIP_10-removebg-preview.png" alt="">
+                </li>
+                <li
+                    class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Home</a>
+                </li>
+                <li
+                    class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Historique</a>
+                </li>
+                <li
+                    class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Cards</a>
+                </li>
+                <li
+                    class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Factures & Recharge</a>
+                </li>
+                <li
+                    class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Transactions</a>
+                </li>
+                <li
+                    class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="">Profile</a>
+                </li>
+            </ul>
+        </nav>
                 <div class="w-full h-full">
-                    <div class="p-4  border grid grid-cols-2">
-                        <div class="">
+                    <div class="p-4  grid grid-cols-2 justify-around py-8 py-6 gap-10">
+                        <div class=" relative left-10">
 
-                            <div class="flex justify-center items-center bg-black h-10 w-40  rounded-sm ">
-                                <h2 class=" text-[#FFFFFF]">Recharge</h2>
+                            <div class="flex justify-center items-center bg-black h-10 w-40 mb-6  rounded-sm ">
+                                <h2 class=" text-[#FFFFFF] ">Recharge</h2>
                             </div>
                             <div
-                                class="flex flex-col items-start  gap-5 mr-6 ">
-                                <div><button class="hover:text-yellow-700">Orange</button></div>
-                                <div><button>IAM</button></div>
-                                <div><button>Inwi</button></div>
+                                class="flex flex-col items-start gap-5 relative left-10  ">
+                                <div><button  id="btnOrange" class="hover:text-orange-500 cursor-pointer transform-[2]">Orange</button></div>
+                                <div><button id="btnIam" class="hover:text-blue-500 cursor-pointer">IAM</button></div>
+                                <div><button id="btnInwi" class="hover:text-fuchsia-500">Inwi</button></div>
                             </div>
                         </div>
-                        <div class=" border-2 rounded-sm w-[600px]  p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-black text-base shadow-lg ">
+                        <div class=" rounded-[20px] w-[600px]  p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-black text-base shadow-lg relative right-50 ">
                             <form action>
                                 <div class="flex flex-row  justify-evenly my-6 gap-6 ">
                                     <div>
@@ -36,7 +66,7 @@
                                             <label for="numéro">Phone number</label>
                                         </div>
                                         <div  class="border-2 rounded-lg bg-white" >
-                                            <input type="number" name="numéro"
+                                            <input id="inputPhoneNumber" type="number" name="numéro"
                                                 placeholder="+212...">
                                         </div>
                                     </div>
@@ -45,7 +75,7 @@
                                             <label for>Price</label>
                                         </div>
                                         <div  class="border-2 rounded-lg bg-white">
-                                            <select>
+                                            <select id="selectPrice">
                                                 <option value>10DH</option>
                                                 <option value>20DH</option>
                                                 <option value>50DH</option>
@@ -58,12 +88,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="">
                                         <div>
                                             <label for>Type</label>
                                         </div>
                                         <div  class="border-2 rounded-lg bg-white">
-                                            <select>
+                                            <select id="selectType" >
                                                 <option value>internet</option>
                                                 <option value>recharge</option>
                                             </select>
@@ -71,51 +101,54 @@
                                     </div>
                                     <div>
                                         <div><label for>Date</label></div>
-                                        <div class="border-2 rounded-lg bg-white mx-"><input type="date" name="Date"
+                                        <div class="border-2 rounded-lg bg-white mx-"><input id="inputDateRecharge" type="date" name="Date"
                                                 placeholder></div>
                                     </div>
                                 </div>
-                                <div class="m-6 flex justify-center bg-white hover:bg-blue-400 text-black px-4 py-2 rounded-lg cursor-pointer md:w-20 md:ml-60 md:mt-20 "><button>Add</button></div>
+                                <div class="m-6 flex justify-center bg-white hover:bg-blue-400 text-black px-4 py-2 rounded-lg cursor-pointer md:w-20 md:ml-60 md:mt-20 "><button id="btnAdd">Add</button></div>
 
                             </form>
                         </div>
                     </div>
 
-                <div class="border grid grid-cols-2 ">
-                    <div>
-                        <div class="flex justify-center items-center bg-black h-10 w-48 rounded-sm">
+                <div class=" ">
+                    <div class="mt-8">
+                        <div class="flex justify-center items-center bg-black h-10 w-48 rounded-sm mb-6 relative left-10">
                             <h2 class=" text-[#FFFFFF]">Invoice</h2>
                         </div>
                         <div class="flex flex-row justify-evenly items-center gap-50">
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Electricity</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Water</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Car insurance</button>
-                            <button class="text-[#808080] hover:text-blue-400 cursor-pointer">Tax</button>
+                            <button  id="btnElectricity" class="text-[#808080] hover:text-blue-400 cursor-pointer">Electricity</button>
+                            <button id="btnWater" class="text-[#808080] hover:text-blue-400 cursor-pointer">Water</button>
+                            <button  id="btnCarInsurance" class="text-[#808080] hover:text-blue-400 cursor-pointer">Car insurance</button>
+                            <button  id="btnTax" class="text-[#808080] hover:text-blue-400 cursor-pointer">Tax</button>
                         </div>
                     </div>
-                    <div class="border border-2 rounded-sm w-[600px] p-6 bg-gradient-to-t from-sky-500 to-indigo-500 text-black text-base shadow-lg">
+                        <div class="flex justify-center mt-20 relative left-30">
+                            <div class=" rounded-[20px] w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-black text-base shadow-lg">
                          <form action>
                         <div class="flex flex-row  justify-evenly my-6 gap-6 ">
                            
                             <div>
                                 <div><label for="contrat">N° Contrat</label></div>
-                                <div class="border-2 rounded-lg bg-white"><input type="number" name="Contrat" placeholder="123456"></div>
+                                <div class="border-2 rounded-lg bg-white"><input id="inputContrat" type="number" name="Contrat" placeholder="123456"></div>
                             </div>
                             <div>
                                 <div><label for="amount">Amount</label></div>
-                                <div  class="border-2 rounded-lg bg-white"><input type="number" name="Amount"></div>
+                                <div  class="border-2 rounded-lg bg-white"><input id="inputAmount" type="number" name="Amount"></div>
                             </div>
 
                             <div class>
                                 <div class><label for="date">Date</label></div>
-                                <div class="border-2 rounded-lg bg-white "><input  type="date" name="Date"></div>
+                                <div class="border-2 rounded-lg bg-white "><input id="inputDateFacture"  type="date" name="Date"></div>
                             </div>
                         </form>
                         </div>
                         <div class="flex flex-row justify-evenly">
-                            <button class="border-2 rounded-lg  py-2 px-4 bg-green-300">pay</button>
-                            <button class="border-2 rounded-lg py-2 px-4 bg-red-300">Cancel</button>
+                            <button class="border-2 rounded-lg  py-2 px-4 bg-green-300" id="btnPay">pay</button>
+                            <button class="border-2 rounded-lg py-2 px-4 bg-red-300" id="btnCancel">Cancel</button>
                         </div>
+
+                       </div>
                     </div>
 
                 </div>

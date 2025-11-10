@@ -173,6 +173,8 @@ dropdown.forEach(drop => {
 
 //zineb
 
+// Transaction
+
 
 const btnAddTransactionPerson = document.getElementById("btnAddTransactionPerson");
 const btnAddTransactionDeposit = document.getElementById("btnAddTransactionDeposit");
@@ -308,6 +310,11 @@ function renderTransactions() {
 
 
 renderTransactions();
+
+// Recharge&Factures
+const btnOrange = document.getElementById('btnOrange');
+const btnIam = document.getElementById('btnIam');
+const btnInwi = document.getElementById('btnInwi');
 
 
 
