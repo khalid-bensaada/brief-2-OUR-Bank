@@ -1,4 +1,3 @@
-console.log("kkkkkk");
 
 function storeInfos() {
   const isMobile =
@@ -41,25 +40,28 @@ function storeInfos() {
     return
   }
 
-        console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
 
   if (
-    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)||
-    !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/)||
-    !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
-    !phone.value.match(/^06\d{8}$/) ||
-    !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
-  ) {
-    Swal.fire({
-      title: "Invalid informations!",
-      text: "Please enter valid informations",
-      icon: "error",
-      confirmButtonText: "Try Again",
-      background: "#fff",
-      scrollbarPadding: false,
-      allowEscapeKey: true,
-    });
-  } else {
+  !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
+  !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
+  !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
+  !phone.value.match(/^06\d{8}$/) ||
+  !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
+) {
+  
+  Swal.fire({
+    title: "Invalid informations!",
+    text: "Please enter valid informations",
+    icon: "error",
+    confirmButtonText: "Try Again",
+    background: "#fff",
+    scrollbarPadding: false,
+    allowEscapeKey: true,
+  });
+
+  
+}
+else {
     if (signPassword.value == passwordConfirmation.value) {
       Swal.fire({
         title: "your login was seccessful",
@@ -105,10 +107,11 @@ function storeInfos() {
           name: person.fullName,
           email: person.email,
         });
-      });
-      setTimeout(()=>{
+        setTimeout(()=>{
         window.location.href = "login.html";
       },1000)
+      });
+      
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -156,9 +159,19 @@ function validateInfos() {
       icon: "error",
       confirmButtonText: "Try Again",
     });
-    document.getElementById("warning").innerText =
-      "it should be 8 letters at least and at least 1 upper or lower case caracter";
+    
   }
+}
+
+
+function annuleSignup(){
+  Swal.fire({
+      title: "Are you sure you want to Quit?",
+      icon: "question",
+      confirmButtonText: "yes",
+      cancelButton: true,
+      
+    });
 }
 
 function toggleMobileDropdown(id) {
