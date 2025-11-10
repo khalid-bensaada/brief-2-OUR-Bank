@@ -157,10 +157,14 @@ function validateInfos() {
 const dropdown = document.querySelectorAll(".dropdown");
 let arrow = document.getElementById("arrow");
 
-dropdown.forEach((drop) => {
-  drop.addEventListener("click", () => {
-    drop.classList.toggle("h-[83.5vh]");
-    drop.classList.toggle("h-[6vh]");
-    arrow.classList.toggle("rotate-x-180");
-  });
+dropdown.forEach(drop => {
+  drop.addEventListener('click', () => {
+  drop.classList.toggle('h-[83.5vh]');
+  drop.classList.toggle('h-[6vh]');
+  arrow.classList.toggle('rotate-x-180')
 });
+})
+
+// khalid 
+
+
