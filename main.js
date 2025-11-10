@@ -165,3 +165,7 @@ dropdown.forEach(drop => {
   arrow.classList.toggle('rotate-x-180')
 });
 })
+
+// khalid 
+
+
