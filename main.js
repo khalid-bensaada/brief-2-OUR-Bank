@@ -45,7 +45,7 @@ function storeInfos() {
 
   if (
     !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)||
-    !SignEmail.value.match(/@gmail.com$/) ||
+    !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/)||
     !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
     !phone.value.match(/^06\d{8}$/) ||
     !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
@@ -106,7 +106,9 @@ function storeInfos() {
           email: person.email,
         });
       });
-      window.location.href = "home.html";
+      setTimeout(()=>{
+        window.location.href = "login.html";
+      },1000)
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -141,7 +143,10 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      window.location.href = "home.html";
+      setTimeout(()=>{
+              window.location.href = "home.html";
+
+      },500)
     });
   } else {
     email.value = "";
@@ -156,16 +161,40 @@ function validateInfos() {
   }
 }
 
-const dropdown = document.querySelectorAll(".dropdown");
-let arrow = document.getElementById("arrow");
+function toggleMobileDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const arrow = document.getElementById('arrow' + id.slice(-1));
 
-dropdown.forEach(drop => {
-  drop.addEventListener('click', () => {
-  drop.classList.toggle('h-[83.5vh]');
-  drop.classList.toggle('h-[6vh]');
-  arrow.classList.toggle('rotate-x-180')
-});
-})
+            if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
+                dropdown.style.maxHeight = '0px';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+        function toggleDesktopDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const content = dropdown.querySelector('.desktop-content');
+            const arrowId = id.replace('desktopDropdown', 'desktopArrow');
+            const arrow = document.getElementById(arrowId);
+
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.innerWidth < 1024) {
+                const dropdown1 = document.getElementById('dropdown1');
+                if (dropdown1) {
+                    dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
+                }
+            }
+        });
 
 // khalid 
 
