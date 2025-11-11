@@ -5,20 +5,157 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
         <title>YCD_Bank</title>
+        <style>
+.card{
+    background-image: url(/images/Rectangle\ 24.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+        </style>
     </head>
 
-    <body class="grid grid-cols-4 p-8 bg-[#45A5E0]">
-        <div class="h-full">
-            <aside
-                class="bg-black text-[#D4AF37] w-full h-full  flex flex-col  justify-center items-center rounded-r-3xl py-8 space-y-6">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="#" class="hover:text-white">Historical</a>
-                <a href="#" class="hover:text-white">Cards</a>
-                <a href="#" class="hover:text-white">Factures & recharge</a>
-                <a href="transactions.html" class="hover:text-white">Transactions</a>
-                <a href="#" class="hover:text-white">Profile</a>
-            </aside>
-        </div>
+    <body class="bg-[#45A5E0] w-[100vw] h-[100vh] ">
+        <div class="w-[100%] h-[900px] flex justify-center items-center">
+            <div class="bg-[#FFFFFF] w-[90%] h-full rounded-3xl flex mt-20 ">
+                <!-- Desktop -->
+                <nav class="w-[15%] min-h-[100vh] p-[1%] bg-black  hidden md:block">
+                    <ul
+                        class="h-full grid grid-cols-3 grid-rows-16 justify-center gap-4">
+                        <li class="row-end-1 col-span-3 text-center">
+                            <img src="/images/OIP_10-removebg-preview.png" alt>
+                        </li>
+                        <li
+                            class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href>Home</a>
+                        </li>
+                        <li
+                            class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href>Historique</a>
+                        </li>
+                        <li
+                            class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href="cardes.html">Cards</a>
+                        </li>
+                        <li
+                            class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href>Factures & Recharge</a>
+                        </li>
+                        <li
+                            class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href="transactions.html">Transactions</a>
+                        </li>
+                        <li
+                            class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                            <a href>Profile</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                 <!-- mobile -->
+
+                    <nav class="fixed bottom-0 left-0 right-0 bg-black text-white py-3 z-50 md:hidden">
+            <div class="flex items-center justify-around">
+                <button class="flex flex-col items-center p-2">
+                    <img src="/images/Group 24.svg" alt="">
+                </button>
+                <button class="flex flex-col items-center p-2">
+                    <img src="/images/Group 25.svg" alt="">
+                </button>
+                <button class="flex flex-col items-center p-2">
+                    <img src="/images/Group 26.svg" alt="">
+                </button>
+                <button class="flex flex-col items-center p-2">
+                    <img src="/images/Group 27 (1).svg" alt="">
+                </button>
+            </div>
+        </nav>
+
+                <main class="w-full md:w-4/5 bg-white p-6 md:p-10">
+
+                    <div class="text-center mb-6">
+                        <button
+                            class="bg-[#44A7E5] text-white px-8 py-2 rounded-full font-semibold  md: w-[200px] lg:w-[200px]">
+                            My Cards
+                        </button>
+                    </div>
+
+                    <section
+                        class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] rounded-lg p-6 md:p-8 my-6">
+
+                        <div
+                            class="text-white w-full min-w-sm h-56  p-6 flex flex-col justify-between  mx-auto">
+
+                            <div
+                                class="flex items-center card h-[22vh] w-[15vw] ">
+                                <div class="ml-6 mt-18">
+                                    <h1 class="font-bold text-lg" id="RIB"></h1>
+                                    <p class="text-xs text-gray-400" id="id"></p>
+                                    <p class="font-bold text-sm" id="owner"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <p
+                            class="text-center text-white font-semibold mt-4">Status:
+                            Active</p>
+                    </section>
+
+                    <section
+                        class="flex flex-col md:flex-row justify-center items-center my-8 space-y-4 md:space-y-0 md:space-x-4">
+                        <button
+                            class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
+                            Action</button>
+                        <button
+                            class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
+                            Block the card
+                        </button>
+                        <button
+                            class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
+                            Show/.CVV
+                        </button>
+                    </section>
+
+                    <section
+                        class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+                        <div
+                            class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-white rounded-2xl p-6">
+                            <h3 class="font-bold text-lg mb-2">Plafond</h3>
+                            <h3></h3>
+                            <p class="mb-4">New plafond:.......MAD</p>
+                            <button
+                                class="bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition-colors">
+                                Edit
+                            </button>
+                        </div>
+
+                        <div
+                            class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-white rounded-2xl p-6">
+                            <h3 class="font-bold text-lg mb-4">last
+                                Transactions</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span>Amazon shop</span>
+                                    <span>450DH</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Carrefour Market</span>
+                                    <span>320DH</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Service station</span>
+                                    <span>200DH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+
+            </div>

@@ -24,11 +24,11 @@ function storeInfos() {
     ? JSON.parse(localStorage.getItem("infos"))
     : [];
 
-    const found = userInfo.find(
-    (info) => info.email === SignEmail.value || info.fullName === fullName.value || info.CIN === CIN.value || info.telephone === phone.value 
+  const found = userInfo.find(
+    (info) => info.email === SignEmail.value || info.fullName === fullName.value || info.CIN === CIN.value || info.telephone === phone.value
   );
 
-  if(found){
+  if (found) {
     Swal.fire({
       title: "something you entered already exist",
       text: "Please enter valid informations",
@@ -41,11 +41,11 @@ function storeInfos() {
     return
   }
 
-        console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
+  console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
 
   if (
-    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i)||
-    !SignEmail.value.match(/@gmail.com$/) ||
+    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
+    !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
     !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
     !phone.value.match(/^06\d{8}$/) ||
     !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
@@ -75,9 +75,8 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${
-            new Date().getMonth() + 1
-          }/${new Date().getDate()}`,
+          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
+            }/${new Date().getDate()}`,
           RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} 0005`,
           RIBepargne: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
@@ -100,13 +99,15 @@ function storeInfos() {
         console.log(person.RIBepargne);
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
-        
+
         emailjs.send("service_qnkj0xs", "template_e6ij7x9", {
           name: person.fullName,
           email: person.email,
         });
       });
-      window.location.href = "home.html";
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1000)
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -117,6 +118,10 @@ function storeInfos() {
   }
 }
 console.log(document.querySelector(".container1"));
+
+
+
+
 function validateInfos() {
   const isMobile =
     window.getComputedStyle(document.querySelector(".container2")).display !==
@@ -131,17 +136,22 @@ function validateInfos() {
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
   console.log(arr);
   const found = arr.find(
-    (info) => info.email === email.value && info.password === password.value
+    (info) => {
+      info.email === email.value && info.password === password.value
+      console.log(info)
+    }
   );
-  console.log(found);
-
   if (found) {
+
     Swal.fire({
       title: "Login successful!",
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      window.location.href = "home.html";
+      setTimeout(() => {
+        window.location.href = "home.html";
+
+      }, 500)
     });
   } else {
     email.value = "";
@@ -156,16 +166,40 @@ function validateInfos() {
   }
 }
 
-const dropdown = document.querySelectorAll(".dropdown");
-let arrow = document.getElementById("arrow");
+function toggleMobileDropdown(id) {
+  const dropdown = document.getElementById(id);
+  const arrow = document.getElementById('arrow' + id.slice(-1));
 
-dropdown.forEach(drop => {
-  drop.addEventListener('click', () => {
-  drop.classList.toggle('h-[83.5vh]');
-  drop.classList.toggle('h-[6vh]');
-  arrow.classList.toggle('rotate-x-180')
+  if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
+    dropdown.style.maxHeight = '0px';
+    arrow.style.transform = 'rotate(0deg)';
+  } else {
+    dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+}
+function toggleDesktopDropdown(id) {
+  const dropdown = document.getElementById(id);
+  const content = dropdown.querySelector('.desktop-content');
+  const arrowId = id.replace('desktopDropdown', 'desktopArrow');
+  const arrow = document.getElementById(arrowId);
+
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    arrow.style.transform = 'rotate(180deg)';
+  } else {
+    content.style.display = 'none';
+    arrow.style.transform = 'rotate(0deg)';
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.innerWidth < 1024) {
+    const dropdown1 = document.getElementById('dropdown1');
+    if (dropdown1) {
+      dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
+    }
+  }
 });
-})
 
 // khalid 
 
@@ -202,110 +236,110 @@ const summaryDate = document.getElementById("summaryDate");
 
 const transactionList = document.getElementById("transactionList");
 
-let currentTransaction = {}; 
+let currentTransaction = {};
 
 
 function showForm(form) {
-    formPerson.classList.add("hidden");
-    formDeposit.classList.add("hidden");
-    formSummary.classList.add("hidden");
+  formPerson.classList.add("hidden");
+  formDeposit.classList.add("hidden");
+  formSummary.classList.add("hidden");
 
-    form.classList.remove("hidden");
+  form.classList.remove("hidden");
 }
 
 
 btnAddTransactionPerson.addEventListener("click", () => {
-    currentTransaction = { type: "Person" };
-    showForm(formPerson);
+  currentTransaction = { type: "Person" };
+  showForm(formPerson);
 });
 
 
 btnAddTransactionDeposit.addEventListener("click", () => {
-    currentTransaction = { type: "Deposit" };
-    showForm(formDeposit);
+  currentTransaction = { type: "Deposit" };
+  showForm(formDeposit);
 });
 
 
 btnNextPerson.addEventListener("click", () => {
-    if (!beneficiary.value || !amountPerson.value) {
-        alert("Please fill all fields!");
-        return;
-    }
-    currentTransaction.to = beneficiary.value;
-    currentTransaction.amount = amountPerson.value;
-    showSummary();
+  if (!beneficiary.value || !amountPerson.value) {
+    alert("Please fill all fields!");
+    return;
+  }
+  currentTransaction.to = beneficiary.value;
+  currentTransaction.amount = amountPerson.value;
+  showSummary();
 });
 
 
 btnNextDeposit.addEventListener("click", () => {
-    if (!amountDeposit.value) {
-        alert("Please enter an amount!");
-        return;
-    }
-    currentTransaction.to = "Deposit Account";
-    currentTransaction.amount = amountDeposit.value;
-    showSummary();
+  if (!amountDeposit.value) {
+    alert("Please enter an amount!");
+    return;
+  }
+  currentTransaction.to = "Deposit Account";
+  currentTransaction.amount = amountDeposit.value;
+  showSummary();
 });
 
 
 function showSummary() {
-    summaryType.textContent = `Type: ${currentTransaction.type}`;
-    summaryTo.textContent = `To: ${currentTransaction.to}`;
-    summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
-    summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
-    showForm(formSummary);
+
+  summaryType.textContent = `Type: ${currentTransaction.type}`;
+  summaryTo.textContent = `To: ${currentTransaction.to}`;
+  summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
+  summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
+  showForm(formSummary);
 }
 
 
 btnBackToForm.addEventListener("click", () => {
-    if (currentTransaction.type === "Person") showForm(formPerson);
-    else showForm(formDeposit);
+  if (currentTransaction.type === "Person") showForm(formPerson);
+  else showForm(formDeposit);
 });
 
 
 btnConfirm.addEventListener("click", () => {
-    currentTransaction.date = new Date().toLocaleString();
+  currentTransaction.date = new Date().toLocaleString();
 
-    saveTransaction(currentTransaction);
-    alert("Transaction saved successfully!");
+  saveTransaction(currentTransaction);
+  alert("Transaction saved successfully!");
 
- 
-    beneficiary.value = "";
-    amountPerson.value = "";
-    amountDeposit.value = "";
-    currentTransaction = {};
-    showForm(formPerson);
 
-    renderTransactions();
+  beneficiary.value = "";
+  amountPerson.value = "";
+  amountDeposit.value = "";
+  currentTransaction = {};
+  showForm(formPerson);
+
+  renderTransactions();
 });
 
 
 function saveTransaction(transaction) {
-    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    transactions.push(transaction);
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  transactions.push(transaction);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 
 function renderTransactions() {
-    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    transactionList.innerHTML = "";
+  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  transactionList.innerHTML = "";
 
-    transactions.forEach((t) => {
-        const card = document.createElement("div");
-        card.className = `rounded-sm p-4 shadow-md w-full ${
-            t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-        }`;
+  transactions.forEach((t) => {
+    const card = document.createElement("div");
+    card.className = `rounded-sm p-4 shadow-md w-full ${t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
+      }`;
 
-        card.innerHTML = `
+    card.innerHTML = `
             <p><strong>Type:</strong> ${t.type}</p>
             <p><strong>To:</strong> ${t.to}</p>
             <p><strong>Amount:</strong> ${t.amount}</p>
             <p><strong>Date:</strong> ${t.date}</p>
         `;
 
-        transactionList.appendChild(card);
-    });
+    transactionList.appendChild(card);
+  });
 }
 
 
@@ -315,6 +349,68 @@ renderTransactions();
 const btnOrange = document.getElementById('btnOrange');
 const btnIam = document.getElementById('btnIam');
 const btnInwi = document.getElementById('btnInwi');
+const inputPhoneNumber = document.getElementById('inputPhoneNumber');
+const selectPrice = document.getElementById('selectPrice');
+const selectType = document.getElementById('selectType');
+const inputDateRecharge = document.getElementById('inputDateRecharge');
+const btnElectricity = document.getElementById('btnElectricity');
+const btnWater = document.getElementById('btnWater');
+const btnCarInsurance = document.getElementById('btnCarInsurance');
+const btnTax = document.getElementById('btnTax');
+const inputContrat = document.getElementById('inputContrat');
+const inputAmount = document.getElementById('inputAmount');
+const inputDateFacture = document.getElementById('inputDateFacture');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let RiB = document.getElementById('RIB');
+let Id = document.getElementById('id');
+let owner= document.getElementById('owner');
+const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+currentUser.forEach((data)=> {
+  RiB.textContent= data.RIBprincipale;
+  owner.textContent = data.fullName;
+
+})
+
+
+
+
+
+
+
+
 
 
 

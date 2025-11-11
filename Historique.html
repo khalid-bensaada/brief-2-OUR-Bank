@@ -320,40 +320,7 @@
     </section>
 
     <script>
-        function toggleMobileDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const arrow = document.getElementById('arrow' + id.slice(-1));
-
-            if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
-                dropdown.style.maxHeight = '0px';
-                arrow.style.transform = 'rotate(0deg)';
-            } else {
-                dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-                arrow.style.transform = 'rotate(180deg)';
-            }
-        }
-        function toggleDesktopDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const content = dropdown.querySelector('.desktop-content');
-            const arrowId = id.replace('desktopDropdown', 'desktopArrow');
-            const arrow = document.getElementById(arrowId);
-
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                content.style.display = 'none';
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.innerWidth < 1024) {
-                const dropdown1 = document.getElementById('dropdown1');
-                if (dropdown1) {
-                    dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
-                }
-            }
-        });
+        
     </script>
 </body>
 
