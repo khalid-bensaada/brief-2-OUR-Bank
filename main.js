@@ -138,10 +138,6 @@ function storeInfos() {
     }
   }
 }
-console.log(document.querySelector(".container1"));
-
-
-
 
 function validateInfos() {
   const isMobile =
@@ -157,17 +153,13 @@ function validateInfos() {
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
   console.log(arr);
   const found = arr.find(
-    (info) => 
-      info.email == email.value && info.password == password.value
-      
-    
+    (info) => info.email == email.value && info.password == password.value
   );
   console.log(found);
 
-  localStorage.setItem('currentUser', JSON.stringify(found))
+  localStorage.setItem("currentUser", JSON.stringify(found));
 
   if (found) {
-
     Swal.fire({
       title: "Login successful!",
       icon: "success",
@@ -235,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function tout() {
   let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
   let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
-    
+
   let containers = document.querySelectorAll(".desktop-content");
 
   // recharge.forEach((element)=>{
@@ -290,195 +282,157 @@ window.addEventListener("DOMContentLoaded", tout());
 
 //zineb
 
-const btnAddTransactionPerson = document.getElementById(
-  "btnAddTransactionPerson"
-);
-const btnAddTransactionDeposit = document.getElementById(
-  "btnAddTransactionDeposit"
-);
-const btnNextPerson = document.getElementById("btnNextPerson");
-const btnNextDeposit = document.getElementById("btnNextDeposit");
-const btnBackToForm = document.getElementById("btnBackToForm");
-const btnConfirm = document.getElementById("btnConfirm");
+if (window.location.pathname == "/transactions.html") {
+  const btnAddTransactionPerson = document.getElementById(
+    "btnAddTransactionPerson"
+  );
+  const btnAddTransactionDeposit = document.getElementById(
+    "btnAddTransactionDeposit"
+  );
 
-const formPerson = document.getElementById("formPerson");
-const formDeposit = document.getElementById("formDeposit");
-const formSummary = document.getElementById("formSummary");
+  console.log(btnAddTransactionDeposit);
 
-const beneficiary = document.getElementById("beneficiary");
-const amountPerson = document.getElementById("amountPerson");
-const amountDeposit = document.getElementById("amountDeposit");
+  const btnNextPerson = document.getElementById("btnNextPerson");
+  const btnNextDeposit = document.getElementById("btnNextDeposit");
+  const btnBackToForm = document.getElementById("btnBackToForm");
+  const btnConfirm = document.getElementById("btnConfirm");
 
-const summaryType = document.getElementById("summaryType");
-const summaryTo = document.getElementById("summaryTo");
-const summaryAmount = document.getElementById("summaryAmount");
-const summaryDate = document.getElementById("summaryDate");
+  const formPerson = document.getElementById("formPerson");
+  const formDeposit = document.getElementById("formDeposit");
+  const formSummary = document.getElementById("formSummary");
 
-const transactionList = document.getElementById("transactionList");
+  const beneficiary = document.getElementById("beneficiary");
+  const amountPerson = document.getElementById("amountPerson");
+  const amountDeposit = document.getElementById("amountDeposit");
 
-let currentTransaction = {};
+  const summaryType = document.getElementById("summaryType");
+  const summaryTo = document.getElementById("summaryTo");
+  const summaryAmount = document.getElementById("summaryAmount");
+  const summaryDate = document.getElementById("summaryDate");
 
-function showForm(form) {
-  formPerson.classList.add("hidden");
-  formDeposit.classList.add("hidden");
-  formSummary.classList.add("hidden");
+  const transactionList = document.getElementById("transactionList");
 
-  form.classList.remove("hidden");
-}
+  let currentTransaction = [];
 
-btnAddTransactionPerson.addEventListener("click", () => {
-  currentTransaction = { type: "Person" };
-  showForm(formPerson);
-});
+  function showForm(form) {
+    formPerson.classList.add("hidden");
+    formDeposit.classList.add("hidden");
+    formSummary.classList.add("hidden");
 
-btnAddTransactionDeposit.addEventListener("click", () => {
-  currentTransaction = { type: "Deposit" };
-  showForm(formDeposit);
-});
-
-btnNextPerson.addEventListener("click", () => {
-  if (!beneficiary.value || !amountPerson.value) {
-    alert("Please fill all fields!");
-    return;
+    form.classList.remove("hidden");
   }
-  currentTransaction.to = beneficiary.value;
-  currentTransaction.amount = amountPerson.value;
-  showSummary();
-});
 
-btnNextDeposit.addEventListener("click", () => {
-  if (!amountDeposit.value) {
-    alert("Please enter an amount!");
-    return;
+  btnAddTransactionPerson.addEventListener("click", () => {
+    currentTransaction = { type: "Person" };
+    showForm(formPerson);
+  });
+  btnAddTransactionDeposit.addEventListener("click", () => {
+    currentTransaction = { type: "Deposit" };
+    showForm(formDeposit);
+  });
+
+  btnNextPerson.addEventListener("click", () => {
+    if (!beneficiary.value || !amountPerson.value) {
+      alert("Please fill all fields!");
+      return;
+    }
+    currentTransaction.to = beneficiary.value;
+    currentTransaction.amount = amountPerson.value;
+    showSummary();
+  });
+
+  btnNextDeposit.addEventListener("click", () => {
+    if (!amountDeposit.value) {
+      alert("Please enter an amount!");
+      return;
+    }
+    currentTransaction.to = "Deposit Account";
+    currentTransaction.amount = amountDeposit.value;
+    showSummary();
+  });
+
+  function showSummary() {
+    summaryType.textContent = `Type: ${currentTransaction.type}`;
+    summaryTo.textContent = `To: ${currentTransaction.to}`;
+    summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
+    summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
+    showForm(formSummary);
   }
-  currentTransaction.to = "Deposit Account";
-  currentTransaction.amount = amountDeposit.value;
-  showSummary();
-});
 
-function showSummary() {
-  summaryType.textContent = `Type: ${currentTransaction.type}`;
-  summaryTo.textContent = `To: ${currentTransaction.to}`;
-  summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
-  summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
-  showForm(formSummary);
-}
+  btnBackToForm.addEventListener("click", () => {
+    if (currentTransaction.type === "Person") showForm(formPerson);
+    else showForm(formDeposit);
+  });
 
-btnBackToForm.addEventListener("click", () => {
-  if (currentTransaction.type === "Person") showForm(formPerson);
-  else showForm(formDeposit);
-});
+  btnConfirm.addEventListener("click", () => {
+    currentTransaction.date = new Date().toLocaleString();
 
-btnConfirm.addEventListener("click", () => {
-  currentTransaction.date = new Date().toLocaleString();
+    saveTransaction(currentTransaction);
+    alert("Transaction saved successfully!");
 
-  saveTransaction(currentTransaction);
-  alert("Transaction saved successfully!");
+    beneficiary.value = "";
+    amountPerson.value = "";
+    amountDeposit.value = "";
+    currentTransaction = {};
+    showForm(formPerson);
 
-  beneficiary.value = "";
-  amountPerson.value = "";
-  amountDeposit.value = "";
-  currentTransaction = {};
-  showForm(formPerson);
+    renderTransactions();
+  });
 
-  renderTransactions();
-});
+  function saveTransaction(transaction) {
+    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    transactions.push(transaction);
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+  }
 
-function saveTransaction(transaction) {
-  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-  transactions.push(transaction);
-  localStorage.setItem("transactions", JSON.stringify(transactions));
-}
+  function renderTransactions() {
+    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+    transactionList.innerHTML = "";
 
-function renderTransactions() {
-  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-  transactionList.innerHTML = "";
+    transactions.forEach((t) => {
+      const card = document.createElement("div");
+      card.className = `rounded-sm p-4 shadow-md w-full ${
+        t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
+      }`;
 
-  transactions.forEach((t) => {
-    const card = document.createElement("div");
-    card.className = `rounded-sm p-4 shadow-md w-full ${
-      t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-    }`;
-
-    card.innerHTML = `
+      card.innerHTML = `
             <p><strong>Type:</strong> ${t.type}</p>
             <p><strong>To:</strong> ${t.to}</p>
             <p><strong>Amount:</strong> ${t.amount}</p>
             <p><strong>Date:</strong> ${t.date}</p>
         `;
 
-    transactionList.appendChild(card);
-  });
-}
+      transactionList.appendChild(card);
+    });
+  }
 
-renderTransactions();
+  renderTransactions();
+}
+console.log(window.location);
 
 // Recharge&Factures
-const btnOrange = document.getElementById('btnOrange');
-const btnIam = document.getElementById('btnIam');
-const btnInwi = document.getElementById('btnInwi');
-const inputPhoneNumber = document.getElementById('inputPhoneNumber');
-const selectPrice = document.getElementById('selectPrice');
-const selectType = document.getElementById('selectType');
-const inputDateRecharge = document.getElementById('inputDateRecharge');
-const btnElectricity = document.getElementById('btnElectricity');
-const btnWater = document.getElementById('btnWater');
-const btnCarInsurance = document.getElementById('btnCarInsurance');
-const btnTax = document.getElementById('btnTax');
-const inputContrat = document.getElementById('inputContrat');
-const inputAmount = document.getElementById('inputAmount');
-const inputDateFacture = document.getElementById('inputDateFacture');
+const btnOrange = document.getElementById("btnOrange");
+const btnIam = document.getElementById("btnIam");
+const btnInwi = document.getElementById("btnInwi");
+const inputPhoneNumber = document.getElementById("inputPhoneNumber");
+const selectPrice = document.getElementById("selectPrice");
+const selectType = document.getElementById("selectType");
+const inputDateRecharge = document.getElementById("inputDateRecharge");
+const btnElectricity = document.getElementById("btnElectricity");
+const btnWater = document.getElementById("btnWater");
+const btnCarInsurance = document.getElementById("btnCarInsurance");
+const btnTax = document.getElementById("btnTax");
+const inputContrat = document.getElementById("inputContrat");
+const inputAmount = document.getElementById("inputAmount");
+const inputDateFacture = document.getElementById("inputDateFacture");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let RiB = document.getElementById('RIB');
-let Id = document.getElementById('id');
-let owner= document.getElementById('owner');
-const currentUser = JSON.parse(localStorage.getItem('currentUser'))
-
-currentUser.forEach((data)=> {
-  RiB.textContent= data.RIBprincipale;
-  owner.textContent = data.fullName;
-
-})
-
-
-
-
-
-
-
-
-
-
-
+let RiB = document.getElementById("RIB");
+let Id = document.getElementById("id");
+let owner = document.getElementById("owner");
+let infoContainer = document.getElementById("info-container");
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+console.log(currentUser);
+let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
+                                <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
+                                <p class="" id="owner">${currentUser.fullName}</p>`;
+infoContainer.innerHTML = content;
