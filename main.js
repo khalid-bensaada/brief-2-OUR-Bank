@@ -1,4 +1,3 @@
-
 function storeInfos() {
   const isMobile =
     window.getComputedStyle(document.querySelector(".container2")).display !==
@@ -23,11 +22,15 @@ function storeInfos() {
     ? JSON.parse(localStorage.getItem("infos"))
     : [];
 
-    const found = userInfo.find(
-    (info) => info.email === SignEmail.value || info.fullName === fullName.value || info.CIN === CIN.value || info.telephone === phone.value 
+  const found = userInfo.find(
+    (info) =>
+      info.email === SignEmail.value ||
+      info.fullName === fullName.value ||
+      info.CIN === CIN.value ||
+      info.telephone === phone.value
   );
 
-  if(found){
+  if (found) {
     Swal.fire({
       title: "something you entered already exist",
       text: "Please enter valid informations",
@@ -37,31 +40,28 @@ function storeInfos() {
       scrollbarPadding: false,
       allowEscapeKey: true,
     });
-    return
+    return;
   }
 
-
   if (
-  !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
-  !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
-  !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
-  !phone.value.match(/^06\d{8}$/) ||
-  !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
-) {
-  
-  Swal.fire({
-    title: "Invalid informations!",
-    text: "Please enter valid informations",
-    icon: "error",
-    confirmButtonText: "Try Again",
-    background: "#fff",
-    scrollbarPadding: false,
-    allowEscapeKey: true,
-  });
-
-  
-}
-else {
+    !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
+    !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
+    !signPassword.value.match(
+      /^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/
+    ) ||
+    !phone.value.match(/^06\d{8}$/) ||
+    !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
+  ) {
+    Swal.fire({
+      title: "Invalid informations!",
+      text: "Please enter valid informations",
+      icon: "error",
+      confirmButtonText: "Try Again",
+      background: "#fff",
+      scrollbarPadding: false,
+      allowEscapeKey: true,
+    });
+  } else {
     if (signPassword.value == passwordConfirmation.value) {
       Swal.fire({
         title: "your login was seccessful",
@@ -80,7 +80,23 @@ else {
           dateDeSignup: `${new Date().getFullYear()}/${
             new Date().getMonth() + 1
           }/${new Date().getDate()}`,
-          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} 0005`,
+          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} 0005`,
           RIBepargne: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -102,16 +118,15 @@ else {
         console.log(person.RIBepargne);
         userInfo.push(person);
         localStorage.setItem("infos", JSON.stringify(userInfo));
-        
+
         emailjs.send("service_qnkj0xs", "template_e6ij7x9", {
           name: person.fullName,
           email: person.email,
         });
-        setTimeout(()=>{
-        window.location.href = "login.html";
-      },1000)
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1000);
       });
-      
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -146,10 +161,9 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      setTimeout(()=>{
-              window.location.href = "home.html";
-
-      },500)
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 500);
     });
   } else {
     email.value = "";
@@ -159,197 +173,207 @@ function validateInfos() {
       icon: "error",
       confirmButtonText: "Try Again",
     });
-    
   }
 }
 
-
-function annuleSignup(){
+function annuleSignup() {
   Swal.fire({
-      title: "Are you sure you want to Quit?",
-      icon: "question",
-      confirmButtonText: "yes",
-      cancelButton: true,
-      
-    });
+    title: "Are you sure you want to Quit?",
+    icon: "question",
+    confirmButtonText: "yes",
+    cancelButton: true,
+  });
 }
 
 function toggleMobileDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const arrow = document.getElementById('arrow' + id.slice(-1));
+  const dropdown = document.getElementById(id);
+  const arrow = document.getElementById("arrow" + id.slice(-1));
 
-            if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
-                dropdown.style.maxHeight = '0px';
-                arrow.style.transform = 'rotate(0deg)';
-            } else {
-                dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-                arrow.style.transform = 'rotate(180deg)';
-            }
-        }
-        function toggleDesktopDropdown(id) {
-            const dropdown = document.getElementById(id);
-            const content = dropdown.querySelector('.desktop-content');
-            const arrowId = id.replace('desktopDropdown', 'desktopArrow');
-            const arrow = document.getElementById(arrowId);
+  if (dropdown.style.maxHeight && dropdown.style.maxHeight !== "0px") {
+    dropdown.style.maxHeight = "0px";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+    arrow.style.transform = "rotate(180deg)";
+  }
+}
+function toggleDesktopDropdown(id) {
+  const dropdown = document.getElementById(id);
+  const content = dropdown.querySelector(".desktop-content");
+  const arrowId = id.replace("desktopDropdown", "desktopArrow");
+  const arrow = document.getElementById(arrowId);
 
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                arrow.style.transform = 'rotate(180deg)';
-            } else {
-                content.style.display = 'none';
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.innerWidth < 1024) {
-                const dropdown1 = document.getElementById('dropdown1');
-                if (dropdown1) {
-                    dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
-                }
-            }
-        });
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  } else {
+    content.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  }
+}
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth < 1024) {
+    const dropdown1 = document.getElementById("dropdown1");
+    if (dropdown1) {
+      dropdown1.style.maxHeight = dropdown1.scrollHeight + "px";
+    }
+  }
+});
 
-// khalid 
+let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
 
+let container = document.querySelector(".desktop-content");
+console.log(Virements);
 
+Virements.forEach((element) => {
+  let content = `<div class="border-t border-gray-300 p-4">
+                            <div class="flex gap-3 items-start mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                    <img src="/images/Frame 37.svg" alt="">
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Virements</h3>
+                                    <p class="text-sm text-gray-500">Vers: ${element.to}</p>
+                                    <p class="text-sm text-gray-500">Date: ${element.date}</p>
+                                    <p class="text-sm text-gray-500">Ref: ${element.type}</p>
+                                </div>
+                                <span class="text-red-500 text-lg font-semibold">-${element.amount}.00 MAD</span>
+                            </div>
+                        </div>`;
+
+                    let div = document.createElement('div')
+                    div.innerHTML = content
+                    console.log(div)
+                    
+  console.log(content);
+  container.appendChild(div);
+  
+});
+
+// khalid
 
 //zineb
 
-
-const btnAddTransactionPerson = document.getElementById("btnAddTransactionPerson");
-const btnAddTransactionDeposit = document.getElementById("btnAddTransactionDeposit");
+const btnAddTransactionPerson = document.getElementById(
+  "btnAddTransactionPerson"
+);
+const btnAddTransactionDeposit = document.getElementById(
+  "btnAddTransactionDeposit"
+);
 const btnNextPerson = document.getElementById("btnNextPerson");
 const btnNextDeposit = document.getElementById("btnNextDeposit");
 const btnBackToForm = document.getElementById("btnBackToForm");
 const btnConfirm = document.getElementById("btnConfirm");
 
-
 const formPerson = document.getElementById("formPerson");
 const formDeposit = document.getElementById("formDeposit");
 const formSummary = document.getElementById("formSummary");
 
-
 const beneficiary = document.getElementById("beneficiary");
 const amountPerson = document.getElementById("amountPerson");
 const amountDeposit = document.getElementById("amountDeposit");
-
 
 const summaryType = document.getElementById("summaryType");
 const summaryTo = document.getElementById("summaryTo");
 const summaryAmount = document.getElementById("summaryAmount");
 const summaryDate = document.getElementById("summaryDate");
 
-
 const transactionList = document.getElementById("transactionList");
 
-let currentTransaction = {}; 
-
+let currentTransaction = {};
 
 function showForm(form) {
-    formPerson.classList.add("hidden");
-    formDeposit.classList.add("hidden");
-    formSummary.classList.add("hidden");
+  formPerson.classList.add("hidden");
+  formDeposit.classList.add("hidden");
+  formSummary.classList.add("hidden");
 
-    form.classList.remove("hidden");
+  form.classList.remove("hidden");
 }
-
 
 btnAddTransactionPerson.addEventListener("click", () => {
-    currentTransaction = { type: "Person" };
-    showForm(formPerson);
+  currentTransaction = { type: "Person" };
+  showForm(formPerson);
 });
-
 
 btnAddTransactionDeposit.addEventListener("click", () => {
-    currentTransaction = { type: "Deposit" };
-    showForm(formDeposit);
+  currentTransaction = { type: "Deposit" };
+  showForm(formDeposit);
 });
-
 
 btnNextPerson.addEventListener("click", () => {
-    if (!beneficiary.value || !amountPerson.value) {
-        alert("Please fill all fields!");
-        return;
-    }
-    currentTransaction.to = beneficiary.value;
-    currentTransaction.amount = amountPerson.value;
-    showSummary();
+  if (!beneficiary.value || !amountPerson.value) {
+    alert("Please fill all fields!");
+    return;
+  }
+  currentTransaction.to = beneficiary.value;
+  currentTransaction.amount = amountPerson.value;
+  showSummary();
 });
-
 
 btnNextDeposit.addEventListener("click", () => {
-    if (!amountDeposit.value) {
-        alert("Please enter an amount!");
-        return;
-    }
-    currentTransaction.to = "Deposit Account";
-    currentTransaction.amount = amountDeposit.value;
-    showSummary();
+  if (!amountDeposit.value) {
+    alert("Please enter an amount!");
+    return;
+  }
+  currentTransaction.to = "Deposit Account";
+  currentTransaction.amount = amountDeposit.value;
+  showSummary();
 });
-
 
 function showSummary() {
-    summaryType.textContent = `Type: ${currentTransaction.type}`;
-    summaryTo.textContent = `To: ${currentTransaction.to}`;
-    summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
-    summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
-    showForm(formSummary);
+  summaryType.textContent = `Type: ${currentTransaction.type}`;
+  summaryTo.textContent = `To: ${currentTransaction.to}`;
+  summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
+  summaryDate.textContent = `Date: ${new Date().toLocaleString()}`;
+  showForm(formSummary);
 }
-
 
 btnBackToForm.addEventListener("click", () => {
-    if (currentTransaction.type === "Person") showForm(formPerson);
-    else showForm(formDeposit);
+  if (currentTransaction.type === "Person") showForm(formPerson);
+  else showForm(formDeposit);
 });
-
 
 btnConfirm.addEventListener("click", () => {
-    currentTransaction.date = new Date().toLocaleString();
+  currentTransaction.date = new Date().toLocaleString();
 
-    saveTransaction(currentTransaction);
-    alert("Transaction saved successfully!");
+  saveTransaction(currentTransaction);
+  alert("Transaction saved successfully!");
 
- 
-    beneficiary.value = "";
-    amountPerson.value = "";
-    amountDeposit.value = "";
-    currentTransaction = {};
-    showForm(formPerson);
+  beneficiary.value = "";
+  amountPerson.value = "";
+  amountDeposit.value = "";
+  currentTransaction = {};
+  showForm(formPerson);
 
-    renderTransactions();
+  renderTransactions();
 });
 
-
 function saveTransaction(transaction) {
-    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    transactions.push(transaction);
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  transactions.push(transaction);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
-
 function renderTransactions() {
-    let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    transactionList.innerHTML = "";
+  let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  transactionList.innerHTML = "";
 
-    transactions.forEach((t) => {
-        const card = document.createElement("div");
-        card.className = `rounded-sm p-4 shadow-md w-full ${
-            t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-        }`;
+  transactions.forEach((t) => {
+    const card = document.createElement("div");
+    card.className = `rounded-sm p-4 shadow-md w-full ${
+      t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
+    }`;
 
-        card.innerHTML = `
+    card.innerHTML = `
             <p><strong>Type:</strong> ${t.type}</p>
             <p><strong>To:</strong> ${t.to}</p>
             <p><strong>Amount:</strong> ${t.amount}</p>
             <p><strong>Date:</strong> ${t.date}</p>
         `;
 
-        transactionList.appendChild(card);
-    });
+    transactionList.appendChild(card);
+  });
 }
 
-
 renderTransactions();
-
-
-
