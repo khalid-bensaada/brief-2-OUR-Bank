@@ -1,5 +1,3 @@
-console.log("kkkkkk");
-
 function storeInfos() {
   const isMobile =
     window.getComputedStyle(document.querySelector(".container2")).display !==
@@ -18,14 +16,20 @@ function storeInfos() {
   const signPassword = document.querySelector(
     isMobile ? "#phone-signUp-password" : "#signUp-password"
   );
-  const passwordConfirmation = document.querySelector("#password-confirmation");
+  const passwordConfirmation = document.querySelector(
+    isMobile ? "#phone-password-confirmation" : "#password-confirmation"
+  );
 
   const userInfo = localStorage.getItem("infos")
     ? JSON.parse(localStorage.getItem("infos"))
     : [];
 
   const found = userInfo.find(
-    (info) => info.email === SignEmail.value || info.fullName === fullName.value || info.CIN === CIN.value || info.telephone === phone.value
+    (info) =>
+      info.email === SignEmail.value ||
+      info.fullName === fullName.value ||
+      info.CIN === CIN.value ||
+      info.telephone === phone.value
   );
 
   if (found) {
@@ -38,15 +42,15 @@ function storeInfos() {
       scrollbarPadding: false,
       allowEscapeKey: true,
     });
-    return
+    return;
   }
-
-  console.log(fullName.value.match(/[a-z]{4,}\s + [a-z]{4,}/))
 
   if (
     !fullName.value.match(/[a-z]{4,}\s[a-z]{4,}/i) ||
     !SignEmail.value.match(/^[A-Za-z\d]{5,}@gmail.com$/) ||
-    !signPassword.value.match(/^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/) ||
+    !signPassword.value.match(
+      /^(?=.*[A-Z]{1,})(?=.*[a-z]{1,})(?=.*\d)[A-Za-z\d]{8,}$/
+    ) ||
     !phone.value.match(/^06\d{8}$/) ||
     !CIN.value.match(/^[A-Z]{1,2}\d{4}$/)
   ) {
@@ -75,9 +79,26 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
-            }/${new Date().getDate()}`,
-          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)} 0005`,
+          dateDeSignup: `${new Date().getFullYear()}/${
+            new Date().getMonth() + 1
+          }/${new Date().getDate()}`,
+          RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} ${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )}${Math.floor(Math.random() * 9)}${Math.floor(
+            Math.random() * 9
+          )} 0005`,
           RIBepargne: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -104,10 +125,10 @@ function storeInfos() {
           name: person.fullName,
           email: person.email,
         });
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1000);
       });
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 1000)
     } else {
       Swal.fire({
         title: "please enter valid infos",
@@ -136,11 +157,15 @@ function validateInfos() {
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
   console.log(arr);
   const found = arr.find(
-    (info) => {
-      info.email === email.value && info.password === password.value
-      console.log(info)
-    }
+    (info) => 
+      info.email == email.value && info.password == password.value
+      
+    
   );
+  console.log(found);
+
+  localStorage.setItem('currentUser', JSON.stringify(found))
+
   if (found) {
 
     Swal.fire({
@@ -148,10 +173,9 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      setTimeout(() => {
-        window.location.href = "home.html";
-
-      }, 500)
+      // setTimeout(() => {
+      //   window.location.href = "home.html";
+      // }, 500);
     });
   } else {
     email.value = "";
@@ -161,83 +185,138 @@ function validateInfos() {
       icon: "error",
       confirmButtonText: "Try Again",
     });
-    document.getElementById("warning").innerText =
-      "it should be 8 letters at least and at least 1 upper or lower case caracter";
   }
+}
+
+function annuleSignup() {
+  Swal.fire({
+    title: "Are you sure you want to Quit?",
+    icon: "question",
+    confirmButtonText: "yes",
+    cancelButton: true,
+  });
 }
 
 function toggleMobileDropdown(id) {
   const dropdown = document.getElementById(id);
-  const arrow = document.getElementById('arrow' + id.slice(-1));
+  const arrow = document.getElementById("arrow" + id.slice(-1));
 
-  if (dropdown.style.maxHeight && dropdown.style.maxHeight !== '0px') {
-    dropdown.style.maxHeight = '0px';
-    arrow.style.transform = 'rotate(0deg)';
+  if (dropdown.style.maxHeight && dropdown.style.maxHeight !== "0px") {
+    dropdown.style.maxHeight = "0px";
+    arrow.style.transform = "rotate(0deg)";
   } else {
-    dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-    arrow.style.transform = 'rotate(180deg)';
+    dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+    arrow.style.transform = "rotate(180deg)";
   }
 }
 function toggleDesktopDropdown(id) {
   const dropdown = document.getElementById(id);
-  const content = dropdown.querySelector('.desktop-content');
-  const arrowId = id.replace('desktopDropdown', 'desktopArrow');
+  const content = dropdown.querySelector(".desktop-content");
+  const arrowId = id.replace("desktopDropdown", "desktopArrow");
   const arrow = document.getElementById(arrowId);
 
-  if (content.style.display === 'none') {
-    content.style.display = 'block';
-    arrow.style.transform = 'rotate(180deg)';
+  if (content.style.display === "none") {
+    content.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
   } else {
-    content.style.display = 'none';
-    arrow.style.transform = 'rotate(0deg)';
+    content.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
   }
 }
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   if (window.innerWidth < 1024) {
-    const dropdown1 = document.getElementById('dropdown1');
+    const dropdown1 = document.getElementById("dropdown1");
     if (dropdown1) {
-      dropdown1.style.maxHeight = dropdown1.scrollHeight + 'px';
+      dropdown1.style.maxHeight = dropdown1.scrollHeight + "px";
     }
   }
 });
 
-// khalid 
+function tout() {
+  let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
+  let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
+    
+  let containers = document.querySelectorAll(".desktop-content");
 
+  // recharge.forEach((element)=>{
+  //   let content = `<div class="border-t border-gray-300 p-4">
+  //                           <div class="flex gap-3 items-start mb-4">
+  //                               <div
+  //                                   class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+  //                                   <img src="/images/Frame 38.svg" alt="">
+  //                               </div>
+  //                               <div class="flex-1">
+  //                                   <h3 class="font-semibold">Recharge</h3>
+  //                                   <p class="text-sm text-gray-500">Vers: ${element.to}</p>
+  //                                   <p class="text-sm text-gray-500">Date: ${element.date}</p>
+  //                                   <p class="text-sm text-gray-500">Ref: ${element.type}</p>
+  //                               </div>
+  //                               <span class="text-orange-400 text-lg font-semibold">${element.amount}.00 MAD</span>
+  //                           </div>
+  //                       </div>`;
+  // })
 
+  containers.forEach((container) => {
+    Virements.forEach((element) => {
+      let content = `<div class="border-t border-gray-300 p-4">
+                            <div class="flex gap-3 items-start mb-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                    <img src="/images/Frame 37.svg" alt="">
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Virements</h3>
+                                    <p class="text-sm text-gray-500">Vers: ${element.to}</p>
+                                    <p class="text-sm text-gray-500">Date: ${element.date}</p>
+                                    <p class="text-sm text-gray-500">Ref: ${element.type}</p>
+                                </div>
+                                <span class="text-red-500 text-lg font-semibold">-${element.amount}.00 MAD</span>
+                            </div>
+                        </div>`;
+
+      let div = document.createElement("div");
+      div.innerHTML = content;
+      console.log(div);
+
+      console.log(content);
+      container.appendChild(div);
+    });
+  });
+}
+
+window.addEventListener("DOMContentLoaded", tout());
+
+// khalid
 
 //zineb
 
-// Transaction
-
-
-const btnAddTransactionPerson = document.getElementById("btnAddTransactionPerson");
-const btnAddTransactionDeposit = document.getElementById("btnAddTransactionDeposit");
+const btnAddTransactionPerson = document.getElementById(
+  "btnAddTransactionPerson"
+);
+const btnAddTransactionDeposit = document.getElementById(
+  "btnAddTransactionDeposit"
+);
 const btnNextPerson = document.getElementById("btnNextPerson");
 const btnNextDeposit = document.getElementById("btnNextDeposit");
 const btnBackToForm = document.getElementById("btnBackToForm");
 const btnConfirm = document.getElementById("btnConfirm");
 
-
 const formPerson = document.getElementById("formPerson");
 const formDeposit = document.getElementById("formDeposit");
 const formSummary = document.getElementById("formSummary");
 
-
 const beneficiary = document.getElementById("beneficiary");
 const amountPerson = document.getElementById("amountPerson");
 const amountDeposit = document.getElementById("amountDeposit");
-
 
 const summaryType = document.getElementById("summaryType");
 const summaryTo = document.getElementById("summaryTo");
 const summaryAmount = document.getElementById("summaryAmount");
 const summaryDate = document.getElementById("summaryDate");
 
-
 const transactionList = document.getElementById("transactionList");
 
 let currentTransaction = {};
-
 
 function showForm(form) {
   formPerson.classList.add("hidden");
@@ -247,18 +326,15 @@ function showForm(form) {
   form.classList.remove("hidden");
 }
 
-
 btnAddTransactionPerson.addEventListener("click", () => {
   currentTransaction = { type: "Person" };
   showForm(formPerson);
 });
 
-
 btnAddTransactionDeposit.addEventListener("click", () => {
   currentTransaction = { type: "Deposit" };
   showForm(formDeposit);
 });
-
 
 btnNextPerson.addEventListener("click", () => {
   if (!beneficiary.value || !amountPerson.value) {
@@ -270,7 +346,6 @@ btnNextPerson.addEventListener("click", () => {
   showSummary();
 });
 
-
 btnNextDeposit.addEventListener("click", () => {
   if (!amountDeposit.value) {
     alert("Please enter an amount!");
@@ -281,9 +356,7 @@ btnNextDeposit.addEventListener("click", () => {
   showSummary();
 });
 
-
 function showSummary() {
-
   summaryType.textContent = `Type: ${currentTransaction.type}`;
   summaryTo.textContent = `To: ${currentTransaction.to}`;
   summaryAmount.textContent = `Amount: ${currentTransaction.amount}`;
@@ -291,19 +364,16 @@ function showSummary() {
   showForm(formSummary);
 }
 
-
 btnBackToForm.addEventListener("click", () => {
   if (currentTransaction.type === "Person") showForm(formPerson);
   else showForm(formDeposit);
 });
-
 
 btnConfirm.addEventListener("click", () => {
   currentTransaction.date = new Date().toLocaleString();
 
   saveTransaction(currentTransaction);
   alert("Transaction saved successfully!");
-
 
   beneficiary.value = "";
   amountPerson.value = "";
@@ -314,13 +384,11 @@ btnConfirm.addEventListener("click", () => {
   renderTransactions();
 });
 
-
 function saveTransaction(transaction) {
   let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
   transactions.push(transaction);
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
-
 
 function renderTransactions() {
   let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -328,8 +396,9 @@ function renderTransactions() {
 
   transactions.forEach((t) => {
     const card = document.createElement("div");
-    card.className = `rounded-sm p-4 shadow-md w-full ${t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-      }`;
+    card.className = `rounded-sm p-4 shadow-md w-full ${
+      t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
+    }`;
 
     card.innerHTML = `
             <p><strong>Type:</strong> ${t.type}</p>
@@ -341,7 +410,6 @@ function renderTransactions() {
     transactionList.appendChild(card);
   });
 }
-
 
 renderTransactions();
 
