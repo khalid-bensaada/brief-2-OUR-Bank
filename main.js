@@ -153,9 +153,14 @@ function validateInfos() {
   const arr = JSON.parse(localStorage.getItem("infos")) || [];
   console.log(arr);
   const found = arr.find(
-    (info) => info.email === email.value && info.password === password.value
+    (info) => 
+      info.email == email.value && info.password == password.value
+      
+    
   );
   console.log(found);
+
+  localStorage.setItem('currentUser', JSON.stringify(found))
 
   if (found) {
     Swal.fire({
@@ -163,9 +168,9 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 500);
+      // setTimeout(() => {
+      //   window.location.href = "home.html";
+      // }, 500);
     });
   } else {
     email.value = "";
