@@ -116,6 +116,8 @@ function storeInfos() {
           )}${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )} 0005`,
+          id: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9)
+          
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
