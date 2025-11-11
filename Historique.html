@@ -12,8 +12,8 @@
 <body class="bg-gradient-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] min-h-[140vh] py-0 lg:py-10">
 
     <main
-        class="hidden lg:flex w-[90%] min-h-[130vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white justify-between container2">
-        <nav class="w-[15%] min-h-[130vh] p-[1%] bg-black">
+        class="hidden lg:flex w-[90%] min-h-[100vh] absolute top-[5%] left-[5%] rounded-[3vw] overflow-hidden bg-white justify-between container2">
+        <nav class="w-[15%] min-h-[100vh] p-[1%] bg-black">
             <ul class="h-full grid grid-cols-3 grid-rows-16 justify-center gap-4">
                 <li class="row-end-1 col-span-3 text-center">
                     <img src="/images/OIP_10-removebg-preview.png" alt="">
@@ -49,19 +49,19 @@
             <h1 class="font-semibold font-mono text-2xl">Historique and Transactions</h1>
 
             <div class="flex w-[50%] justify-between gap-2">
-                <button
+                <button onclick="tout()"
                     class="border-gray-300 border flex-1 py-3 bg-gradient-to-t from-[rgb(0,74,120)] to-[rgb(123,205,255)] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md text-white font-medium hover:opacity-90 transition-opacity">
                     Tout
                 </button>
-                <button
+                <button onclick="Virements()"
                     class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Virements
                 </button>
-                <button
+                <button onclick="Paiements()"
                     class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Paiements
                 </button>
-                <button
+                <button onclick="Recharge()"
                     class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Recharge
                 </button>
@@ -149,19 +149,19 @@
             <h2 class="text-lg font-semibold mb-4">Historique des transaction</h2>
 
             <div class="flex gap-2 mb-4 overflow-x-auto pb-2">
-                <button
+                <button onclick="tout()"
                     class="px-4 py-2 bg-gradient-to-t from-[rgb(0,74,120)] to-[rgb(123,205,255)] text-white rounded-lg shadow-md whitespace-nowrap text-sm font-medium">
                     Tout
                 </button>
-                <button
+                <button onclick="Virements()"
                     class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
-                    Virement
+                    Virements
                 </button>
-                <button
+                <button onclick="Paiements()"
                     class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Paiements
                 </button>
-                <button
+                <button onclick="Recharge()"
                     class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Recharges
                 </button>
@@ -181,7 +181,7 @@
                     </svg>
                 </button>
 
-                <div id="dropdown1"  class="phone-content mt-3 space-y-3 max-h-0 overflow-hidden transition-all duration-300">
+                <div id="dropdown1"  class="desktop-content mt-3 space-y-3 max-h-0 overflow-hidden transition-all duration-300">
                     <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
                         <div class="flex items-start justify-between mb-2">
                             <div class="flex items-center">

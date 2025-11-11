@@ -16,7 +16,9 @@ function storeInfos() {
   const signPassword = document.querySelector(
     isMobile ? "#phone-signUp-password" : "#signUp-password"
   );
-  const passwordConfirmation = document.querySelector(isMobile ? "#phone-password-confirmation" : "#password-confirmation");
+  const passwordConfirmation = document.querySelector(
+    isMobile ? "#phone-password-confirmation" : "#password-confirmation"
+  );
 
   const userInfo = localStorage.getItem("infos")
     ? JSON.parse(localStorage.getItem("infos"))
@@ -223,9 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function tout() {
   let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
   let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
-  let isMobile = window.getComputedStyle(document.querySelector(".container2")).display ==
-    "none";
-  let container = document.querySelector(isMobile ? ".phone-content" : ".desktop-content");
+    
+  let containers = document.querySelectorAll(".desktop-content");
 
   // recharge.forEach((element)=>{
   //   let content = `<div class="border-t border-gray-300 p-4">
@@ -245,8 +246,9 @@ function tout() {
   //                       </div>`;
   // })
 
-  Virements.forEach((element) => {
-    let content = `<div class="border-t border-gray-300 p-4">
+  containers.forEach((container) => {
+    Virements.forEach((element) => {
+      let content = `<div class="border-t border-gray-300 p-4">
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
@@ -262,20 +264,17 @@ function tout() {
                             </div>
                         </div>`;
 
+      let div = document.createElement("div");
+      div.innerHTML = content;
+      console.log(div);
 
-    let div = document.createElement("div");
-    div.innerHTML = content;
-    console.log(div);
-
-    console.log(content);
-    container.appendChild(div);
-    
+      console.log(content);
+      container.appendChild(div);
+    });
   });
 }
 
-
-
-window.addEventListener('DOMContentLoaded', tout())
+window.addEventListener("DOMContentLoaded", tout());
 
 // khalid
 
