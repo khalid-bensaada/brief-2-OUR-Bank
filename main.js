@@ -116,8 +116,11 @@ function storeInfos() {
           )}${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )} 0005`,
-          id: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9)
-          
+          idPrincipale: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9),
+          idEpargne: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9),
+          soldePrincipale: '10 000 MAD' ,
+          soldeEpargne: '00 MAD'
+
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
