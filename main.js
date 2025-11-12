@@ -282,6 +282,19 @@ window.addEventListener("DOMContentLoaded", tout());
 
 // khalid
 
+const btnOrange = document.getElementById("btnOrange");
+const btnIam = document.getElementById("btnIam");
+const btnInwi = document.getElementById("btnInwi");
+const inputPhoneNumber = document.getElementById("inputPhoneNumber");
+const selectPrice = document.getElementById("selectPrice");
+const selectType = document.getElementById("selectType");
+const inputDateRecharge = document.getElementById("inputDateRecharge");
+
+
+
+
+
+
 //zineb
 
 if (window.location.pathname == "/transactions.html") {
@@ -413,13 +426,7 @@ if (window.location.pathname == "/transactions.html") {
 console.log(window.location);
 
 // Recharge&Factures
-const btnOrange = document.getElementById("btnOrange");
-const btnIam = document.getElementById("btnIam");
-const btnInwi = document.getElementById("btnInwi");
-const inputPhoneNumber = document.getElementById("inputPhoneNumber");
-const selectPrice = document.getElementById("selectPrice");
-const selectType = document.getElementById("selectType");
-const inputDateRecharge = document.getElementById("inputDateRecharge");
+
 const btnElectricity = document.getElementById("btnElectricity");
 const btnWater = document.getElementById("btnWater");
 const btnCarInsurance = document.getElementById("btnCarInsurance");
@@ -438,3 +445,6 @@ let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</
                                 <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
                                 <p class="" id="owner">${currentUser.fullName}</p>`;
 infoContainer.innerHTML = content;
+
+
+
