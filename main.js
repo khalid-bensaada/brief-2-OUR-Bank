@@ -244,9 +244,7 @@ function tout() {
   let btntout = document.querySelectorAll(".tout");
   let buttons = document.querySelectorAll("button");
 
-    style(buttons, btntout)
-
-
+  getActiveButton(buttons, btntout);
 
   let containers = document.querySelectorAll(".desktop-content");
 
@@ -296,22 +294,27 @@ function tout() {
 }
 
 function Virements() {
-  let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
+  let transaction = JSON.parse(localStorage.getItem("transactions")) || [];
   let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
   let btnVirements = document.querySelectorAll(".Virements");
   let buttons = document.querySelectorAll("button");
-
-
-  style(buttons, btnVirements)
   let containers = document.querySelectorAll(".desktop-content");
 
+  getActiveButton(buttons, btnVirements);
+  displayFromLocalSrorage(containers,transaction,"virements","/images/Frame 37.svg");
+}
+
+window.addEventListener("DOMContentLoaded", tout());
+
+function displayFromLocalSrorage(containers, transaction, id, src) {
+  console.log(id)
   containers.forEach((container) => {
-    Virements.forEach((element) => {
-      let content = `<div class="border-t border-gray-300 p-4 card" id='virements'>
+    transaction.forEach((element) => {
+      let content = `<div class="border-t border-gray-300 p-4 card" id=${id}>
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/images/Frame 37.svg" alt="">
+                                    <img src="${src}" alt="">
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="font-semibold">Virements</h3>
@@ -325,18 +328,25 @@ function Virements() {
 
       let div = document.createElement("div");
       div.innerHTML = content;
-      let virements = document.getElementById("virements");
+      let variable = document.getElementById(`${id}`);
+      console.log(variable)
 
-      if (virements) {
-        container.appendChild(div);
-      } else {
-        container.replaceChildren(div);
+      console.log(transaction.length);
+      console.log(container);
+
+      if (container.children.length < transaction.length) {
+        if (variable) {
+          container.appendChild(div);
+        } else {
+          container.replaceChildren(div);
+        }
+        console.log(container)
       }
     });
   });
 }
 
-function style(arr, button) {
+function getActiveButton(arr, button) {
   let active = arr.forEach((element) => {
     if (element.classList.contains("active")) {
       element.classList.remove("active");
@@ -346,54 +356,6 @@ function style(arr, button) {
     }
   });
 }
-
-function Recharge() {
-  let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
-  let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
-  let btnVirements = document.getElementById("Virements");
-  let buttons = document.querySelectorAll("button");
-
-  let active = buttons.forEach((button) => {
-    if (button.classList.contains("active")) {
-    }
-    console.log(button);
-    button.classList.remove("active");
-    btnVirements.classList.add("active");
-  });
-  let containers = document.querySelectorAll(".desktop-content");
-
-  containers.forEach((container) => {
-    Virements.forEach((element) => {
-      let content = `<div class="border-t border-gray-300 p-4 card" id='virements'>
-                            <div class="flex gap-3 items-start mb-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/images/Frame 37.svg" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Virements</h3>
-                                    <p class="text-sm text-gray-500">Vers: ${element.to}</p>
-                                    <p class="text-sm text-gray-500">Date: ${element.date}</p>
-                                    <p class="text-sm text-gray-500">Ref: ${element.type}</p>
-                                </div>
-                                <span class="text-red-500 text-lg font-semibold">-${element.amount}.00 MAD</span>
-                            </div>
-                        </div>`;
-
-      let div = document.createElement("div");
-      div.innerHTML = content;
-      let virements = document.getElementById("virements");
-
-      if (virements) {
-        container.appendChild(div);
-      } else {
-        container.replaceChildren(div);
-      }
-    });
-  });
-}
-
-window.addEventListener("DOMContentLoaded", tout());
 
 // khalid
 
