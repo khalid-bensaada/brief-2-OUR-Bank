@@ -364,6 +364,79 @@ function getActiveButton(arr, button) {
 
 // khalid
 
+let operator = document.getElementById("operator")
+const phoneNumber = document.getElementById("phoneNumber");
+const price = document.getElementById("price");
+const type = document.getElementById("type");
+const dateRecharge = document.getElementById("dateRecharge");
+const add = document.getElementById("add");
+const concelIt = document.getElementById("concelIt");
+
+// for get same solde from the sold principal 
+let changSolde ;
+
+
+
+function saveLocal(saved){
+
+  let save = JSON.parse(localStorage.getItem("save")) || [];
+  save.push(saved);
+  localStorage.setItem("save" ,JSON.stringify(save));
+}
+
+// click on button of validation 
+
+add.addEventListener('click', function(){
+
+  if (operator.value != "" || phoneNumber.value != ""   ||  price.value != ""  || type.value != ""  || dateRecharge.value!= "" ){
+    alert("seccecefull add");
+  };
+
+  let phoneRegex = /^+212[5-7]\d{8}$/;
+
+if (phoneRegex.test(phoneNumber.value)){
+  alert("namber valid")
+}else{
+  alert("envalid number")
+}
+
+const saved = {
+  operation : operator.value,
+  number :phoneNumber.value,
+  prix : price.value,
+  typ : type.value,
+  date : dateRecharge.value
+
+}
+
+saveLocal(saved);
+
+alert("seccesfully saved");
+
+operator.value =0;
+phoneNumber.value="";
+price.value=0;
+type.value=0;
+dateRecharge.value="";
+
+})
+
+
+
+concelIt.addEventListener('click' , function(){
+operator.value =0;
+phoneNumber.value="";
+price.value=0;
+type.value=0;
+dateRecharge.value="";
+
+});
+
+
+
+
+
+
 //zineb
 
 if (window.location.pathname == "/transactions.html") {
@@ -495,13 +568,7 @@ if (window.location.pathname == "/transactions.html") {
 console.log(window.location);
 
 // Recharge&Factures
-const btnOrange = document.getElementById("btnOrange");
-const btnIam = document.getElementById("btnIam");
-const btnInwi = document.getElementById("btnInwi");
-const inputPhoneNumber = document.getElementById("inputPhoneNumber");
-const selectPrice = document.getElementById("selectPrice");
-const selectType = document.getElementById("selectType");
-const inputDateRecharge = document.getElementById("inputDateRecharge");
+
 const btnElectricity = document.getElementById("btnElectricity");
 const btnWater = document.getElementById("btnWater");
 const btnCarInsurance = document.getElementById("btnCarInsurance");
@@ -520,3 +587,6 @@ let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</
                                 <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
                                 <p class="" id="owner">${currentUser.fullName}</p>`;
 infoContainer.innerHTML = content;
+
+
+
