@@ -370,16 +370,24 @@ const concelIt = document.getElementById("concelIt");
 // for get same solde from the sold principal 
 let changSolde ;
 
+
+
+function saveLocal(saved){
+
+  let save = JSON.parse(localStorage.getItem("save")) || [];
+  save.push(saved);
+  localStorage.setItem("save" ,JSON.stringify(save));
+}
+
 // click on button of validation 
 
 add.addEventListener('click', function(){
 
   if (operator.value != "" || phoneNumber.value != ""   ||  price.value != ""  || type.value != ""  || dateRecharge.value!= "" ){
     alert("seccecefull add");
-  }
-})
+  };
 
-let phoneRegex = /^+212[5-7]\d{8}$/;
+  let phoneRegex = /^+212[5-7]\d{8}$/;
 
 if (phoneRegex.test(phoneNumber.value)){
   alert("namber valid")
@@ -387,7 +395,7 @@ if (phoneRegex.test(phoneNumber.value)){
   alert("envalid number")
 }
 
-const recharge = {
+const saved = {
   operation : operator.value,
   number :phoneNumber.value,
   prix : price.value,
@@ -395,6 +403,20 @@ const recharge = {
   date : dateRecharge.value
 
 }
+
+saveLocal(saved);
+
+alert("seccesfully saved");
+
+operator.value =0;
+phoneNumber.value="";
+price.value=0;
+type.value=0;
+dateRecharge.value="";
+
+})
+
+
 
 concelIt.addEventListener('click' , function(){
 operator.value =0;
