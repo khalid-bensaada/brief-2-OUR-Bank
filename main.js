@@ -387,7 +387,23 @@ if (phoneRegex.test(phoneNumber.value)){
   alert("envalid number")
 }
 
+const recharge = {
+  operation : operator.value,
+  number :phoneNumber.value,
+  prix : price.value,
+  typ : type.value,
+  date : dateRecharge.value
 
+}
+
+concelIt.addEventListener('click' , function(){
+operator.value =0;
+phoneNumber.value="";
+price.value=0;
+type.value=0;
+dateRecharge.value="";
+
+});
 
 
 
