@@ -397,13 +397,35 @@ window.addEventListener("DOMContentLoaded", tout());
 
 // khalid
 
-const btnOrange = document.getElementById("btnOrange");
-const btnIam = document.getElementById("btnIam");
-const btnInwi = document.getElementById("btnInwi");
-const inputPhoneNumber = document.getElementById("inputPhoneNumber");
-const selectPrice = document.getElementById("selectPrice");
-const selectType = document.getElementById("selectType");
-const inputDateRecharge = document.getElementById("inputDateRecharge");
+let operator = document.getElementById("operator")
+const phoneNumber = document.getElementById("phoneNumber");
+const price = document.getElementById("price");
+const type = document.getElementById("type");
+const dateRecharge = document.getElementById("dateRecharge");
+const add = document.getElementById("add");
+const concelIt = document.getElementById("concelIt");
+
+// for get same solde from the sold principal 
+let changSolde ;
+
+// click on button of validation 
+
+add.addEventListener('click', function(){
+
+  if (operator.value != "" || phoneNumber.value != ""   ||  price.value != ""  || type.value != ""  || dateRecharge.value!= "" ){
+    alert("seccecefull add");
+  }
+})
+
+let phoneRegex = /^+212[5-7]\d{8}$/;
+
+if (phoneRegex.test(phoneNumber.value)){
+  alert("namber valid")
+}else{
+  alert("envalid number")
+}
+
+
 
 
 
