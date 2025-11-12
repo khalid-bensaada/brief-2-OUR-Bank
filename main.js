@@ -301,13 +301,18 @@ function Virements() {
   let containers = document.querySelectorAll(".desktop-content");
 
   getActiveButton(buttons, btnVirements);
-  displayFromLocalSrorage(containers,transaction,"virements","/images/Frame 37.svg");
+  displayFromLocalSrorage(
+    containers,
+    transaction,
+    "virements",
+    "/images/Frame 37.svg"
+  );
 }
 
 window.addEventListener("DOMContentLoaded", tout());
 
 function displayFromLocalSrorage(containers, transaction, id, src) {
-  console.log(id)
+  console.log(id);
   containers.forEach((container) => {
     transaction.forEach((element) => {
       let content = `<div class="border-t border-gray-300 p-4 card" id=${id}>
@@ -329,7 +334,7 @@ function displayFromLocalSrorage(containers, transaction, id, src) {
       let div = document.createElement("div");
       div.innerHTML = content;
       let variable = document.getElementById(`${id}`);
-      console.log(variable)
+      console.log(variable);
 
       console.log(transaction.length);
       console.log(container);
@@ -340,7 +345,7 @@ function displayFromLocalSrorage(containers, transaction, id, src) {
         } else {
           container.replaceChildren(div);
         }
-        console.log(container)
+        console.log(container);
       }
     });
   });
