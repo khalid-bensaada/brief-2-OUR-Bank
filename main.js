@@ -293,20 +293,16 @@ function displayFromLocalStorage(containers, transactions, id, src) {
               <img src="${src}" alt="">
             </div>
             <div class="flex-1">
-              <h3 class="font-semibold">${
-                id === "virements" ? "Virement" : "Paiement"
-              }</h3>
-              <p class="text-sm text-gray-500">Vers: ${
-                element.to || element.number || "N/A"
-              }</p>
+              <h3 class="font-semibold">${id === "virements" ? "Virement" : "Paiement"
+        }</h3>
+              <p class="text-sm text-gray-500">Vers: ${element.to || element.number || "N/A"
+        }</p>
               <p class="text-sm text-gray-500">Date: ${element.date || "—"}</p>
-              <p class="text-sm text-gray-500">Ref: ${
-                element.type || element.typ || "—"
-              }</p>
+              <p class="text-sm text-gray-500">Ref: ${element.type || element.typ || "—"
+        }</p>
             </div>
-            <span class="text-red-500 text-lg font-semibold">-${
-              element.amount || element.prix || "0"
-            }.00 MAD</span>
+            <span class="text-red-500 text-lg font-semibold">-${element.amount || element.prix || "0"
+        }.00 MAD</span>
           </div>
         </div>
       `;
@@ -333,8 +329,8 @@ let ctr = 0;
 notifIcon.addEventListener("click", () => {
   let notification = document.querySelector(".notification");
   notification.classList.toggle('opacity-100')
-  notification.classList.contains('opacity-100')?
-    notification.style.top = '15px':notification.style.top = '0px'
+  notification.classList.contains('opacity-100') ?
+    notification.style.top = '15px' : notification.style.top = '0px'
 
 
 });
@@ -426,8 +422,13 @@ document.getElementById("cni").textContent = cni;
 let mal = localStorage.getItem("email");
 document.getElementById("mal").textContent = mal;
 
-let pnumber =localStorage.getItem("telephone");
+let pnumber = localStorage.getItem("telephone");
 document.getElementById("pnumber").textContent = pnumber;
+
+document.getElementById("createPdf").addEventListener('click', function () {
+
+  window.print();
+});
 
 
 //zineb
