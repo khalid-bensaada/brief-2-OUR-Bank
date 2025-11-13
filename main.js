@@ -423,6 +423,12 @@ document.getElementById("funa").textContent = funa;
 let cni = localStorage.getItem("CIN");
 document.getElementById("cni").textContent = cni;
 
+let mal = localStorage.getItem("email");
+document.getElementById("mal").textContent = mal;
+
+let pnumber =localStorage.getItem("telephone");
+document.getElementById("pnumber").textContent = pnumber;
+
 
 //zineb
 
