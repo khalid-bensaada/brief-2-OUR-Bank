@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+=======
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+>>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b
 
-    <title>YCD_Bank</title>
-    <style>
-        .card {
+        <title>YCD_Bank</title>
+        <style>
+        .card{
             background-image: url(/images/card.svg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
         }
     </style>
-</head>
+    </head>
 
 <body class="bg-[#45A5E0] w-[100vw] h-[100vh] ">
     <div class="w-[100%] h-[900px] flex justify-center items-center">
@@ -81,78 +90,53 @@
                     </button>
                 </div>
 
-                <section class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] rounded-lg p-6 md:p-8 my-6">
+                    <section
+                        class="md:grid md:grid-cols-2 h-fit w-full md:h-[300px] md:gap-[10px]">
+                        <div class="rounded-lg h-[20vh]">
+                            <div class="text-white min-w-sm h-full flex flex-col justify-between">
+                                <div class="flex self-center card h-full w-[60%] md:h-[30.5vh]">
+                                    <div class="h-full" id="info-container">
 
-                    <div class="text-white w-full min-w-sm h-56  p-6 flex flex-col justify-between  mx-auto">
+                                    </div>
+                                </div>
 
-                        <div class="flex items-center card h-[30.5vh] w-[24vw] ">
-                            <div class="ml-10 mt-20" id="info-container">
-                                
                             </div>
+
+                            <p class="text-center text-white font-semibold mt-4">Status:Active</p>
+                        </div>
+                        <div class="rounded-lg h-[20vh]">
+                                <div class="flex in-w-sm h-full self-center card w-[24vw] md:h-full opacity-35  ">
+
+                                    <div class="h-full absolut left-20 ">
+                                        <img class="w-[20%]"
+                                            src="images/plusIcone.png" />
+                                    </div>
+                                </div>
+
                         </div>
 
-                    </div>
+                    </section>
+                    <div class="grid justify-center item-center ">
 
-                    <p class="text-center text-white font-semibold mt-4">Status:
-                        Active</p>
-                </section>
+                        <div
+                            class="bg-gradient-to-r w-112 h-full max-w-2xs from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-white rounded-2xl p-6  ">
+                            <h3 class="font-bold text-lg mb-2">Plafond</h3>
+                            <h3></h3>
+                            <p class="mb-4 text-sm">New plafond:</p>
 
-                <section
-                    class="flex flex-col md:flex-row justify-center items-center my-8 space-y-4 md:space-y-0 md:space-x-4">
-                    <button
-                        class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
-                        Action</button>
-                    <button
-                        class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
-                        Block the card
-                    </button>
-                    <button
-                        class="bg-black text-white px-8 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 transition-colors">
-                        Show/.CVV
-                    </button>
-                </section>
-
-                <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-
-                    <div class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-white rounded-2xl p-6">
-                        <h3 class="font-bold text-lg mb-2">Plafond</h3>
-                        <h3></h3>
-                        <p class="mb-4">New plafond:.......MAD</p>
-                        <button
-                            class="bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition-colors">
-                            Edit
-                        </button>
-                    </div>
-
-                    <div class="bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-white rounded-2xl p-6">
-                        <h3 class="font-bold text-lg mb-4">last
-                            Transactions</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span>Amazon shop</span>
-                                <span>450DH</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Carrefour Market</span>
-                                <span>320DH</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Service station</span>
-                                <span>200DH</span>
-                            </div>
+                        </div>
+                        <div class="flex justify-center item-center m-6">
+                            <button
+                                class="bg-white text-black px-6 py-2 rounded-full  shadow-md hover:bg-">
+                                Edit
+                            </button>
                         </div>
                     </div>
-                </section>
-
-            </main>
-
+                </main>
             </div>
+
         </div>
-         <script src="main.js"></script>
-        </body>
-</html>
+        <script src="main.js"></script>
 
-<script src="main.js"></script>
-</body>
-
+    </body>
 </html>

@@ -68,42 +68,38 @@
 
                     
                    <div class="gird grid-cols-3">
-                     <h3 class="text-black mt-10 mb-4 text-center text-xl font-semibold">Transaction History</h3>
-                    <div id="transactionList"
-                        class="flex felx-row md:flex flex-col gap-4">
+                    <div class=" w-[100%] flex justify-center mt-6  md:relative md:left-60  ">
+                        <input class="w-[50%] border rounded-lg py-2 px-4 md:w-[70%] " type="text" name="search" placeholder="Search">
 
                     </div>
-
-                    <div class="grid grid-cols-2 gap-4 justify-evenly mt-6">
+                    <div class="grid md:grid-cols-2 grid-rows-2 gap-2 md:gap-4 justify-evenly mt-6 md:ml-6">
                         <button id="btnAddTransactionPerson"
-                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md cursor-pointer">
-                            Add Transaction to Person
+                            class="bg-[#45A5E0]  text-white px-4 py-2 rounded-md cursor-pointer">
+                            Add transfer to Person
                         </button>
                         <button id="btnAddTransactionDeposit"
-                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md cursor-pointer">
-                            Add Transaction to Deposit
+                            class="bg-[#000000] text-white px-4 py-2 rounded-md cursor-pointer">
+                            Add transfer to Deposit
                         </button>
                     </div>
+                     <h3 class="text-black mt-10 mb-4 text-center  text-xl font-semibold">Bank transfer History</h3>
+                    <div id="transactionList"
+                        class="flex felx-row w-[100%] self-center md:flex flex-col gap-4  md:ml-10">
+
+                    </div>
+
+                    
 
                     <div id="formPerson"
-                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-t from-sky-500 to-indigo-500 text-black text-base shadow-lg mt-6">
+                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-black text-base shadow-lg mt-6">
                         <h3
-                            class="text-lg font-semibold mb-4 text-white">Transaction
+                            class="text-lg font-semibold mb-4 text-white">transfer
                             to Person</h3>
                         <form
                             class="flex flex-col gap-6 bg-white p-6 rounded-md shadow-sm">
-                            <label for="beneficiary" class="font-medium">Select
+                            <label for="beneficiary" class="font-medium">Full name of
                                 Beneficiary:</label>
-                            <select id="beneficiary"
-                                class="border rounded-md p-2 w-full">
-                                <option value>Choose one</option>
-                                <option value="Mohammed Elhamdaoui">Mohammed
-                                    Elhamdaoui</option>
-                                <option value="Khaled Bensaada">Khaled
-                                    Bensaada</option>
-                                <option value="Halima Hamada">Halima
-                                    Hamada</option>
-                            </select>
+                                <input  class="border rounded-md p-2 w-full" type="text" name="beneficiary" placeholder="beneficiary"  id="beneficiary" />
 
                             <label for="amountPerson"
                                 class="font-medium">Amount:</label>
@@ -113,12 +109,12 @@
                         </form>
                         <div class="mt-4 flex justify-end">
                             <button id="btnNextPerson"
-                                class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
+                                class="bg-[#45A5E0]  text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
                         </div>
                     </div>
 
                     <div id="formDeposit"
-                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-t from-green-500 to-green-700 text-black text-base shadow-lg mt-6">
+                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-black text-base shadow-lg mt-6">
                         <h3
                             class="text-lg font-semibold mb-4 text-white">Deposit
                             to Account</h3>
@@ -132,7 +128,7 @@
                         </form>
                         <div class="mt-4 flex justify-end">
                             <button id="btnNextDeposit"
-                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
+                                class="bg-[#45A5E0] text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
                         </div>
                     </div>
 
@@ -145,12 +141,14 @@
                             <div id="summaryAmount">Amount:</div>
                             <div id="summaryDate">Date:</div>
                         </div>
+
+
                         <div class="grid grid-cols-2 mt-6">
                             <button id="btnBackToForm"
-                                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md cursor-pointer">Edit</button>
+                                class="bg-[#45A5E0] text-white px-4 py-2 rounded-md cursor-pointer">Edit</button>
                             <div class="flex justify-end">
                                 <button id="btnConfirm"
-                                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md cursor-pointer">Confirm</button>
+                                    class="bg-[#45A5E0]  text-white px-4 py-2 rounded-md cursor-pointer">Confirm</button>
                             </div>
                         </div>
                     </div>
