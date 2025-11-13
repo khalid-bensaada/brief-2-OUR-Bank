@@ -442,6 +442,22 @@ if (window.location.pathname == "/facture&Recharge.html") {
   });
 }
 
+let rib = localStorage.getItem("RIBprincipale");
+document.getElementById("rib").textContent = rib;
+
+const full = localStorage.getItem("fullName");
+document.getElementById("noom").textContent = full;
+
+let soold = localStorage.getItem("soldePrincipale");
+document.getElementById("total").textContent = soold;
+
+let funa = localStorage.getItem("fullName");
+document.getElementById("funa").textContent = funa;
+
+let cni = localStorage.getItem("CIN");
+document.getElementById("cni").textContent = cni;
+
+
 //zineb
 
 if (window.location.pathname == "/transactions.html") {
