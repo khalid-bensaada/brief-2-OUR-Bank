@@ -79,9 +79,8 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${
-            new Date().getMonth() + 1
-          }/${new Date().getDate()}`,
+          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
+            }/${new Date().getDate()}`,
           RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -116,9 +115,9 @@ function storeInfos() {
           )}${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )} 0005`,
-          idPrincipale: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9),
-          idEpargne: Math.floor(Math.random() * 9)+Math.floor(Math.random() * 9)+'/'+Math.floor(Math.random() * 9),
-          soldePrincipale: '10 000 MAD' ,
+          idPrincipale: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
+          idEpargne: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
+          soldePrincipale: '10 000 MAD',
           soldeEpargne: '00 MAD'
 
         };
@@ -285,7 +284,9 @@ window.addEventListener("DOMContentLoaded", tout());
 
 // khalid
 
-//zineb
+// Zineb 
+
+
 
 if (window.location.pathname == "/transactions.html") {
   const btnAddTransactionPerson = document.getElementById(
@@ -396,15 +397,19 @@ if (window.location.pathname == "/transactions.html") {
 
     transactions.forEach((t) => {
       const card = document.createElement("div");
-      card.className = `rounded-sm p-4 shadow-md w-full ${
-        t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-      }`;
+      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${t.type === "Person" ? "bg--100" : "bg--100"
+        }`;
 
       card.innerHTML = `
-            <p><strong>Type:</strong> ${t.type}</p>
-            <p><strong>To:</strong> ${t.to}</p>
-            <p><strong>Amount:</strong> ${t.amount}</p>
-            <p><strong>Date:</strong> ${t.date}</p>
+             <div>
+              <p><strong>To:</strong> ${t.to}</p>
+              <p><strong>Amount:</strong> ${t.amount}</p>
+             </div>
+             <div>
+             <svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#FFD43B" d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+             </div>
+        
+             
         `;
 
       transactionList.appendChild(card);
@@ -423,21 +428,156 @@ const inputPhoneNumber = document.getElementById("inputPhoneNumber");
 const selectPrice = document.getElementById("selectPrice");
 const selectType = document.getElementById("selectType");
 const inputDateRecharge = document.getElementById("inputDateRecharge");
-const btnElectricity = document.getElementById("btnElectricity");
-const btnWater = document.getElementById("btnWater");
-const btnCarInsurance = document.getElementById("btnCarInsurance");
-const btnTax = document.getElementById("btnTax");
+
 const inputContrat = document.getElementById("inputContrat");
 const inputAmount = document.getElementById("inputAmount");
 const inputDateFacture = document.getElementById("inputDateFacture");
-
-let RiB = document.getElementById("RIB");
-let Id = document.getElementById("id");
-let owner = document.getElementById("owner");
-let infoContainer = document.getElementById("info-container");
+const btnPay = document.getElementById('btnPayDesktop');
+const btnCancelTow = document.getElementById('btnCancelTow');
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-console.log(currentUser);
-let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
-                                <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
+
+// console.log("jhajhh");
+
+
+// const btnFacture = document.querySelectorAll('.btnFacture');
+// console.log(btnFacture);
+
+
+    // btnFacture.forEach(b => {
+    //   b.classList.remove('text-blue-500', 'font-bold');
+    //   b.classList.add('text-gray-500');
+    // });
+
+    // btn.classList.add('text-blue-500', 'font-bold');
+    // btn.classList.remove('text-gray-500');
+
+
+
+
+
+
+
+
+// function saveFacture() {
+
+//   let paymentFacture = JSON.parse((localStorage.getItem('factureSaved'))) || [];
+// console.log(paymentFacture);
+
+
+// localStorage.setItem('saved', JSON.stringify(paymentFacture))
+  
+    
+  
+      
+
+      // const clickedButton = btn.textContent;
+      // console.log(clickedButton);
+
+       // const facture = {
+        //   factureType: clickedButton,
+        //   contrat: inputContrat.value,
+        //   amount: inputAmount.value,
+        //   date: inputDateFacture.value,
+        // }
+        // btnPay.addEventListener('click', ()=> {
+          //  paymentFacture.push(facture);
+        //localStorage.setItem('factureSaved', JSON.stringify(paymentFacture));
+
+
+//         inputContrat.value = '';
+//         inputAmount.value = '';
+//         inputDateFacture.value = '';
+
+//         alert("Facture payed successfully");
+      
+
+
+//         })
+//         paymentFacture.push(facture);
+// localStorage.setItem('factureSaved', JSON.stringify(paymentFacture));
+      
+  
+  // }
+// 
+// console.log(btnPay)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function saveFacture() {
+
+ 
+  let paymentFacture = JSON.parse(localStorage.getItem('factureSaved')) || [];
+
+   
+  const facture = {
+    factureType: clickedButton,
+    contrat: inputContrat.value,
+    amount: inputAmount.value,
+    date: inputDateFacture.value,
+  };
+
+  
+  paymentFacture.push(facture);
+  localStorage.setItem('factureSaved', JSON.stringify(paymentFacture));
+
+ 
+  inputContrat.value = '';
+  inputAmount.value = '';
+  inputDateFacture.value = '';
+  
+
+
+  alert("Payement is done");
+}
+btnPay.addEventListener('click', saveFacture);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Card
+
+if (window.location.pathname == "/cardes.html") {
+  let RiB = document.getElementById("RIB");
+  let Id = document.getElementById("id");
+  let owner = document.getElementById("owner");
+  let infoContainer = document.getElementById("info-container");
+
+  console.log(currentUser);
+  let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
+                                <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.idPrincipale}</p>
                                 <p class="" id="owner">${currentUser.fullName}</p>`;
-infoContainer.innerHTML = content;
+  infoContainer.innerHTML = content;
+}
+
