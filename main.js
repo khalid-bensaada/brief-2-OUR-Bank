@@ -410,23 +410,21 @@ if (window.location.pathname == "/facture&Recharge.html") {
 
 let currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
+document.getElementById("rib").textContent = currentUser.RIBprincipale
+document.getElementById("total").textContent = currentUser.soldePrincipale
 document.getElementById("noom").textContent = currentUser.fullName
-console.log(document.getElementById("noom"))
 
 
 
 // prof1
-let funa = localStorage.getItem("fullName");
-document.getElementById("funa").textContent = funa;
 
-let cni = localStorage.getItem("CIN");
-document.getElementById("cni").textContent = cni;
+document.getElementById("funa").textContent = currentUser.fullName;
 
-let mal = localStorage.getItem("email");
-document.getElementById("mal").textContent = mal;
+document.getElementById("cni").textContent = currentUser.CIN;
 
-let pnumber = localStorage.getItem("telephone");
-document.getElementById("pnumber").textContent = pnumber;
+document.getElementById("mal").textContent = currentUser.email;
+
+document.getElementById("pnumber").textContent = currentUser.telephone;
 
 
 // pdf
