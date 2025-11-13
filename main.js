@@ -239,61 +239,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function tout() {
-  let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
-  let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
+  let virements = JSON.parse(localStorage.getItem("transactions")) || [];
+  let recharges = JSON.parse(localStorage.getItem("save")) || [];
   let btntout = document.querySelectorAll(".tout");
   let buttons = document.querySelectorAll("button");
 
-  getActiveButton(buttons, btntout);
-
   let containers = document.querySelectorAll(".desktop-content");
 
-  // recharge.forEach((element)=>{
-  //   let content = `<div class="border-t border-gray-300 p-4">
-  //                           <div class="flex gap-3 items-start mb-4">
-  //                               <div
-  //                                   class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-  //                                   <img src="/images/Frame 38.svg" alt="">
-  //                               </div>
-  //                               <div class="flex-1">
-  //                                   <h3 class="font-semibold">Recharge</h3>
-  //                                   <p class="text-sm text-gray-500">Vers: ${element.to}</p>
-  //                                   <p class="text-sm text-gray-500">Date: ${element.date}</p>
-  //                                   <p class="text-sm text-gray-500">Ref: ${element.type}</p>
-  //                               </div>
-  //                               <span class="text-orange-400 text-lg font-semibold">${element.amount}.00 MAD</span>
-  //                           </div>
-  //                       </div>`;
-  // })
-
-  containers.forEach((container) => {
-    let content = `<div class="border-t border-gray-300 p-4 card" id='cards'>
-                            <div class="flex gap-3 items-start mb-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/images/Frame 37.svg" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Virements</h3>
-                                    <p class="text-sm text-gray-500">Vers: ${Virements[0].to}</p>
-                                    <p class="text-sm text-gray-500">Date: ${Virements[0].date}</p>
-                                    <p class="text-sm text-gray-500">Ref: ${Virements[0].type}</p>
-                                </div>
-                                <span class="text-red-500 text-lg font-semibold">-${Virements[0].amount}.00 MAD</span>
-                            </div>
-                        </div>`;
-
-    let div = document.createElement("div");
-    div.innerHTML = content;
-
-    console.log(div.innerHTML);
-    console.log(div.outerHTML);
-    console.log(div);
-    let card = document.getElementById("cards");
-    console.log(content);
-
-    container.appendChild(div);
-  });
+  Recharge();
+  Virements();
+  getActiveButton(buttons, btntout);
 }
 
 window.addEventListener("DOMContentLoaded", tout());
@@ -372,6 +327,18 @@ function getActiveButton(arr, button) {
     }
   });
 }
+
+let notifIcon = document.querySelector(".notifIcon");
+let ctr = 0;
+
+notifIcon.addEventListener("click", () => {
+  let notification = document.querySelector(".notification");
+  notification.classList.toggle('opacity-100')
+  notification.classList.contains('opacity-100')?
+    notification.style.top = '15px':notification.style.top = '0px'
+
+
+});
 
 // khalid
 
