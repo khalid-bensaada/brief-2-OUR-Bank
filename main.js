@@ -323,17 +323,17 @@ function getActiveButton(arr, button) {
   });
 }
 
-let notifIcon = document.querySelector(".notifIcon");
-let ctr = 0;
+// let notifIcon = document.querySelector(".notifIcon");
+// let ctr = 0;
 
-notifIcon.addEventListener("click", () => {
-  let notification = document.querySelector(".notification");
-  notification.classList.toggle('opacity-100')
-  notification.classList.contains('opacity-100') ?
-    notification.style.top = '15px' : notification.style.top = '0px'
+// notifIcon.addEventListener("click", () => {
+//   let notification = document.querySelector(".notification");
+//   notification.classList.toggle('opacity-100')
+//   notification.classList.contains('opacity-100') ?
+//     notification.style.top = '15px' : notification.style.top = '0px'
 
 
-});
+// });
 
 // khalid
 
@@ -404,15 +404,18 @@ if (window.location.pathname == "/facture&Recharge.html") {
   });
 }
 
-let rib = localStorage.getItem("RIBprincipale");
-document.getElementById("rib").textContent = rib;
 
-const full = localStorage.getItem("fullName");
-document.getElementById("noom").textContent = full;
 
-let soold = localStorage.getItem("soldePrincipale");
-document.getElementById("total").textContent = soold;
 
+
+let currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
+document.getElementById("noom").textContent = currentUser.fullName
+console.log(document.getElementById("noom"))
+
+
+
+// prof1
 let funa = localStorage.getItem("fullName");
 document.getElementById("funa").textContent = funa;
 
@@ -425,6 +428,8 @@ document.getElementById("mal").textContent = mal;
 let pnumber = localStorage.getItem("telephone");
 document.getElementById("pnumber").textContent = pnumber;
 
+
+// pdf
 document.getElementById("createPdf").addEventListener('click', function () {
 
   window.print();
