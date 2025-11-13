@@ -79,9 +79,8 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${
-            new Date().getMonth() + 1
-          }/${new Date().getDate()}`,
+          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
+            }/${new Date().getDate()}`,
           RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -239,61 +238,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function tout() {
-  let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
-  let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
+  let virements = JSON.parse(localStorage.getItem("transactions")) || [];
+  let recharges = JSON.parse(localStorage.getItem("save")) || [];
   let btntout = document.querySelectorAll(".tout");
   let buttons = document.querySelectorAll("button");
 
-  getActiveButton(buttons, btntout);
-
   let containers = document.querySelectorAll(".desktop-content");
 
-  // recharge.forEach((element)=>{
-  //   let content = `<div class="border-t border-gray-300 p-4">
-  //                           <div class="flex gap-3 items-start mb-4">
-  //                               <div
-  //                                   class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-  //                                   <img src="/images/Frame 38.svg" alt="">
-  //                               </div>
-  //                               <div class="flex-1">
-  //                                   <h3 class="font-semibold">Recharge</h3>
-  //                                   <p class="text-sm text-gray-500">Vers: ${element.to}</p>
-  //                                   <p class="text-sm text-gray-500">Date: ${element.date}</p>
-  //                                   <p class="text-sm text-gray-500">Ref: ${element.type}</p>
-  //                               </div>
-  //                               <span class="text-orange-400 text-lg font-semibold">${element.amount}.00 MAD</span>
-  //                           </div>
-  //                       </div>`;
-  // })
-
-  containers.forEach((container) => {
-    let content = `<div class="border-t border-gray-300 p-4 card" id='cards'>
-                            <div class="flex gap-3 items-start mb-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/images/Frame 37.svg" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Virements</h3>
-                                    <p class="text-sm text-gray-500">Vers: ${Virements[0].to}</p>
-                                    <p class="text-sm text-gray-500">Date: ${Virements[0].date}</p>
-                                    <p class="text-sm text-gray-500">Ref: ${Virements[0].type}</p>
-                                </div>
-                                <span class="text-red-500 text-lg font-semibold">-${Virements[0].amount}.00 MAD</span>
-                            </div>
-                        </div>`;
-
-    let div = document.createElement("div");
-    div.innerHTML = content;
-
-    console.log(div.innerHTML);
-    console.log(div.outerHTML);
-    console.log(div);
-    let card = document.getElementById("cards");
-    console.log(content);
-
-    container.appendChild(div);
-  });
+  Recharge();
+  Virements();
+  getActiveButton(buttons, btntout);
 }
 
 window.addEventListener("DOMContentLoaded", tout());
@@ -372,6 +326,18 @@ function getActiveButton(arr, button) {
     }
   });
 }
+
+let notifIcon = document.querySelector(".notifIcon");
+let ctr = 0;
+
+notifIcon.addEventListener("click", () => {
+  let notification = document.querySelector(".notification");
+  notification.classList.toggle('opacity-100')
+  notification.classList.contains('opacity-100')?
+    notification.style.top = '15px':notification.style.top = '0px'
+
+
+});
 
 // khalid
 
@@ -569,15 +535,19 @@ if (window.location.pathname == "/transactions.html") {
 
     transactions.forEach((t) => {
       const card = document.createElement("div");
-      card.className = `rounded-sm p-4 shadow-md w-full ${
-        t.type === "Person" ? "bg-indigo-100" : "bg-green-100"
-      }`;
+      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${t.type === "Person" ? "bg--100" : "bg--100"
+        }`;
 
       card.innerHTML = `
-            <p><strong>Type:</strong> ${t.type}</p>
-            <p><strong>To:</strong> ${t.to}</p>
-            <p><strong>Amount:</strong> ${t.amount}</p>
-            <p><strong>Date:</strong> ${t.date}</p>
+             <div>
+              <p><strong>To:</strong> ${t.to}</p>
+              <p><strong>Amount:</strong> ${t.amount}</p>
+             </div>
+             <div>
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#FFD43B" d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+             </div>
+        
+             
         `;
 
       transactionList.appendChild(card);

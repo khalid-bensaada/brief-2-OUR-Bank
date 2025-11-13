@@ -8,12 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-    .active{
+        .active {
 
-        background: linear-gradient(180deg,rgb(123,205,255)0%, rgb(0,74,120)  100%);
-        color: white;
-    }
-</style>
+            background: linear-gradient(180deg, rgb(123, 205, 255)0%, rgb(0, 74, 120) 100%);
+            color: white;
+        }
+    </style>
 </head>
 
 
@@ -29,27 +29,27 @@
                 </li>
                 <li
                     class="row-end-3  col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
-                    <a href="">Home</a>
+                    <a href="home.html">Home</a>
                 </li>
                 <li
                     class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors  cursor-pointer">
-                    <a href="">Historique</a>
+                    <a href="Historique.html">Historique</a>
                 </li>
                 <li
                     class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
-                    <a href="">Cards</a>
+                    <a href="cardes.html">Cards</a>
                 </li>
                 <li
                     class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
-                    <a href="">Factures & Recharge</a>
+                    <a href="facture&Recharge.html">Factures & Recharge</a>
                 </li>
                 <li
                     class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
-                    <a href="">Transactions</a>
+                    <a href="transactions.html">Transactions</a>
                 </li>
                 <li
                     class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
-                    <a href="">Profile</a>
+                    <a href="profile1.html">Profile</a>
                 </li>
             </ul>
         </nav>
@@ -58,7 +58,7 @@
             <h1 class="font-semibold font-mono text-2xl">Historique and Transactions</h1>
 
             <div class="flex w-[50%] justify-between gap-2">
-                <button onclick="tout()" 
+                <button onclick="tout()"
                     class="border-gray-300 border tout flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md active hover:opacity-90 transition-opacity">
                     Tout
                 </button>
@@ -70,7 +70,7 @@
                     class="border-gray-300 border Paiements flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Paiements
                 </button>
-                <button onclick="Recharge()" 
+                <button onclick="Recharge()"
                     class="border-gray-300 border Recharges flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Recharge
                 </button>
@@ -121,21 +121,29 @@
         </section>
     </main>
 
-    <section class="lg:hidden bg-gray-50 min-h-screen container2">
+    <section class="lg:hidden bg-gray-50 min-h-screen container2 relative">
+        <div class="notification w-[50%] h-[20vh] top-0 shadow-[0_0_5px_rgb(0,0,0,0.5)] right-25 bg-[rgb(173,216,230,0.7)] backdrop-filter-[blur(5px)] rounded-xl absolute opacity-0 transition-all duration-[0.8s]" >
+            <h1 class="text-black text-center font-bold text-lg h-[30%] flex items-center justify-center">
+                Notification</h1>
+            <p class="text-black text-center h-[30%] flex items-center justify-center">You have no notifications
+                🔴</p>
+        </div>
         <header class="flex justify-around ">
-            <img src="/images/User.svg" alt="">
+            <a href="profile1.html"><img src="/images/User.svg" alt=""></a>
             <span
                 class="bg-[rgb(37,37,37)] text-white flex items-center justify-center w-[50%] rounded-b-lg text-2xl font-bold py-5 shadow-[0_8px_4px_gray] text-shadow-[3px_3px_2px_black]">Historique</span>
-            <img src="/images/Icon (1).svg" alt="">
+            <img src="/images/Icon (1).svg" class="notifIcon" alt="">
         </header>
 
         <div class="px-4 py-3 bg-white border-b mt-5">
-            <button class="flex items-center text-gray-700 text-sm font-medium">
-                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Retour
-            </button>
+            <a href="home.html">
+                <button class="flex items-center text-gray-700 text-sm font-medium">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Retour
+                </button>
+            </a>
         </div>
 
         <main class="px-4 py-4 pb-24">
@@ -154,7 +162,7 @@
                     class="px-4 py-2 bg-white Paiements border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Paiements
                 </button>
-                <button onclick="Recharge()" 
+                <button onclick="Recharge()"
                     class="px-4 py-2 bg-white border Recharges border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Recharges
                 </button>
@@ -204,16 +212,16 @@
         <nav class="fixed bottom-0 left-0 right-0 bg-black text-white py-3 z-50">
             <div class="flex items-center justify-around">
                 <button class="flex flex-col items-center p-2">
-                    <img src="/images/Group 24.svg" alt="">
+                    <a href="transactions.html"><img src="/images/Group 24.svg" alt=""></a>
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <img src="/images/Group 25.svg" alt="">
+                    <a href="cardes.html"><img src="/images/Group 25.svg" alt=""></a>
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <img src="/images/Group 26.svg" alt="">
+                    <a href="Historique.html"><img src="/images/Group 26.svg" alt=""></a>
                 </button>
                 <button class="flex flex-col items-center p-2">
-                    <img src="/images/Group 27 (1).svg" alt="">
+                    <a href="facture&Recharge.html"><img src="/images/Group 27 (1).svg" alt=""></a>
                 </button>
             </div>
         </nav>
