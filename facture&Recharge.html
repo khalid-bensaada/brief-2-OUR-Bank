@@ -4,7 +4,6 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
         <script
             src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -69,7 +68,7 @@
                             </div>
                             <div
                                 class=" rounded-[20px] w-[800px]  p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)] text-black text-base shadow-lg felx flex-start ">
-                                <form action>
+                                <div>
                                     <div
                                         class="flex flex-row  justify-around my-6 gap-6 ">
                                         <div class="felx felx-col justify-center items-center">
@@ -78,9 +77,9 @@
                                                </div>
                                                 <div>
                                                     <select id="operator" class="border-2 rounded-lg  bg-[#FFFFFF]">
-                                                    <option value="">Orange</option>
-                                                    <option value="" class="">IAM</option>
-                                                    <option value="">Inwi</option>
+                                                    <option value="Orange">Orange</option>
+                                                    <option value="IAM" class="">IAM</option>
+                                                    <option value="Inwi">Inwi</option>
                                                 </select>
                                                 </div>
                                             </div>
@@ -103,14 +102,14 @@
                                             <div
                                                 class="border-2 rounded-lg bg-white">
                                                 <select id="price">
-                                                    <option value>10DH</option>
-                                                    <option value>20DH</option>
-                                                    <option value>50DH</option>
-                                                    <option value>100DH</option>
-                                                    <option value>150DH</option>
-                                                    <option value>200DH</option>
-                                                    <option value>250DH</option>
-                                                    <option value>300DH</option>
+                                                    <option value="10DH">10DH</option>
+                                                    <option value="20DH">20DH</option>
+                                                    <option value="50DH">50DH</option>
+                                                    <option value="100DH">100DH</option>
+                                                    <option value="150DH">150DH</option>
+                                                    <option value="200DH">200DH</option>
+                                                    <option value="250DH">250DH</option>
+                                                    <option value="300DH">300DH</option>
 
                                                 </select>
                                             </div>
@@ -123,9 +122,9 @@
                                                 class="border-2 rounded-lg bg-white">
                                                 <select id="type">
                                                     <option
-                                                        value>internet</option>
+                                                        value="internet">internet</option>
                                                     <option
-                                                        value>recharge</option>
+                                                        value="recharge">recharge</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -147,7 +146,7 @@
                                         </div>
 
 
-                                </form>
+                                </div>
                             </div>
                         </div>
 
@@ -421,5 +420,6 @@
                 </div>
 
             </section>
-            
+            <script src="main.js"></script>
         </body>
+</html>

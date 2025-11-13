@@ -285,68 +285,79 @@ function tout() {
 
     let div = document.createElement("div");
     div.innerHTML = content;
+
+    console.log(div.innerHTML);
+    console.log(div.outerHTML);
     console.log(div);
     let card = document.getElementById("cards");
     console.log(content);
 
-    container.replaceChildren(div);
+    container.appendChild(div);
   });
 }
 
+window.addEventListener("DOMContentLoaded", tout());
+
+function Recharge() {
+  const recharges = JSON.parse(localStorage.getItem("save")) || [];
+  const buttons = document.querySelectorAll("button");
+  const btnPaiements = document.querySelectorAll(".Recharges");
+  const containers = document.querySelectorAll(".desktop-content");
+
+  getActiveButton(buttons, btnPaiements);
+  displayFromLocalStorage(
+    containers,
+    recharges,
+    "paiment",
+    "/images/Frame 38.svg"
+  );
+}
+
 function Virements() {
-  let transaction = JSON.parse(localStorage.getItem("transactions")) || [];
-  let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
-  let btnVirements = document.querySelectorAll(".Virements");
-  let buttons = document.querySelectorAll("button");
-  let containers = document.querySelectorAll(".desktop-content");
+  const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  const buttons = document.querySelectorAll("button");
+  const btnVirements = document.querySelectorAll(".Virements");
+  const containers = document.querySelectorAll(".desktop-content");
 
   getActiveButton(buttons, btnVirements);
-  displayFromLocalSrorage(
+  displayFromLocalStorage(
     containers,
-    transaction,
+    transactions,
     "virements",
     "/images/Frame 37.svg"
   );
 }
 
-window.addEventListener("DOMContentLoaded", tout());
-
-function displayFromLocalSrorage(containers, transaction, id, src) {
-  console.log(id);
+function displayFromLocalStorage(containers, transactions, id, src) {
   containers.forEach((container) => {
-    transaction.forEach((element) => {
-      let content = `<div class="border-t border-gray-300 p-4 card" id=${id}>
-                            <div class="flex gap-3 items-start mb-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="${src}" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Virements</h3>
-                                    <p class="text-sm text-gray-500">Vers: ${element.to}</p>
-                                    <p class="text-sm text-gray-500">Date: ${element.date}</p>
-                                    <p class="text-sm text-gray-500">Ref: ${element.type}</p>
-                                </div>
-                                <span class="text-red-500 text-lg font-semibold">-${element.amount}.00 MAD</span>
-                            </div>
-                        </div>`;
+    container.innerHTML = ""; // clear previous entries
+    transactions.forEach((element) => {
+      const content = `
+        <div class="border-t border-gray-300 p-4 card" id="${id}">
+          <div class="flex gap-3 items-start mb-4">
+            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <img src="${src}" alt="">
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold">${
+                id === "virements" ? "Virement" : "Paiement"
+              }</h3>
+              <p class="text-sm text-gray-500">Vers: ${
+                element.to || element.number || "N/A"
+              }</p>
+              <p class="text-sm text-gray-500">Date: ${element.date || "—"}</p>
+              <p class="text-sm text-gray-500">Ref: ${
+                element.type || element.typ || "—"
+              }</p>
+            </div>
+            <span class="text-red-500 text-lg font-semibold">-${
+              element.amount || element.prix || "0"
+            }.00 MAD</span>
+          </div>
+        </div>
+      `;
 
-      let div = document.createElement("div");
-      div.innerHTML = content;
-      let variable = document.getElementById(`${id}`);
-      console.log(variable);
-
-      console.log(transaction.length);
-      console.log(container);
-
-      if (container.children.length < transaction.length) {
-        if (variable) {
-          container.appendChild(div);
-        } else {
-          container.replaceChildren(div);
-        }
-        console.log(container);
-      }
+      container.insertAdjacentHTML("beforeend", content);
     });
   });
 }
@@ -364,78 +375,72 @@ function getActiveButton(arr, button) {
 
 // khalid
 
-let operator = document.getElementById("operator")
-const phoneNumber = document.getElementById("phoneNumber");
-const price = document.getElementById("price");
-const type = document.getElementById("type");
-const dateRecharge = document.getElementById("dateRecharge");
-const add = document.getElementById("add");
-const concelIt = document.getElementById("concelIt");
+if (window.location.pathname == "/facture&Recharge.html") {
+  let operator = document.getElementById("operator");
+  const phoneNumber = document.getElementById("phoneNumber");
+  const price = document.getElementById("price");
+  const type = document.getElementById("type");
+  const dateRecharge = document.getElementById("dateRecharge");
+  const add = document.getElementById("add");
+  const concelIt = document.getElementById("concelIt");
 
-// for get same solde from the sold principal 
-let changSolde ;
+  // for get same solde from the sold principal
+  let changSolde;
 
+  function saveLocal(saved) {
+    let save = JSON.parse(localStorage.getItem("save")) || [];
+    save.push(saved);
+    localStorage.setItem("save", JSON.stringify(save));
+  }
 
+  // click on button of validation
 
-function saveLocal(saved){
+  add.addEventListener("click", function (e) {
+    if (
+      operator.value != "" ||
+      phoneNumber.value != "" ||
+      price.value != "" ||
+      type.value != "" ||
+      dateRecharge.value != ""
+    ) {
+      alert("seccecefull add");
+    }
 
-  let save = JSON.parse(localStorage.getItem("save")) || [];
-  save.push(saved);
-  localStorage.setItem("save" ,JSON.stringify(save));
+    let phoneRegex = "/^+212[5-7]d{8}$/";
+
+    if (phoneRegex.match(phoneNumber.value)) {
+      alert("namber valid");
+    } else {
+      alert("envalid number");
+    }
+
+    const saved = {
+      operation: operator.value,
+      number: phoneNumber.value,
+      prix: price.value,
+      typ: type.value,
+      date: dateRecharge.value,
+    };
+
+    saveLocal(saved);
+
+    alert("seccesfully saved");
+
+    operator.value = 0;
+    phoneNumber.value = "";
+    price.value = 0;
+    type.value = 0;
+    dateRecharge.value = "";
+  });
+
+  concelIt.addEventListener("click", function () {
+    operator.value = 0;
+    phoneNumber.value = "";
+    price.value = 0;
+    type.value = 0;
+    dateRecharge.value = "";
+  });
 }
-
-// click on button of validation 
-
-add.addEventListener('click', function(){
-
-  if (operator.value != "" || phoneNumber.value != ""   ||  price.value != ""  || type.value != ""  || dateRecharge.value!= "" ){
-    alert("seccecefull add");
-  };
-
-  let phoneRegex = /^+212[5-7]\d{8}$/;
-
-if (phoneRegex.test(phoneNumber.value)){
-  alert("namber valid")
-}else{
-  alert("envalid number")
-}
-
-const saved = {
-  operation : operator.value,
-  number :phoneNumber.value,
-  prix : price.value,
-  typ : type.value,
-  date : dateRecharge.value
-
-}
-
-saveLocal(saved);
-
-alert("seccesfully saved");
-
-operator.value =0;
-phoneNumber.value="";
-price.value=0;
-type.value=0;
-dateRecharge.value="";
-
-})
-
-
-
-concelIt.addEventListener('click' , function(){
-operator.value =0;
-phoneNumber.value="";
-price.value=0;
-type.value=0;
-dateRecharge.value="";
-
-});
-
-
-
-
-
 
 //zineb
 
@@ -565,28 +570,26 @@ if (window.location.pathname == "/transactions.html") {
 
   renderTransactions();
 }
-console.log(window.location);
 
 // Recharge&Factures
 
-const btnElectricity = document.getElementById("btnElectricity");
-const btnWater = document.getElementById("btnWater");
-const btnCarInsurance = document.getElementById("btnCarInsurance");
-const btnTax = document.getElementById("btnTax");
-const inputContrat = document.getElementById("inputContrat");
-const inputAmount = document.getElementById("inputAmount");
-const inputDateFacture = document.getElementById("inputDateFacture");
+if (window.location.pathname == "/cardes.html.html") {
+  const btnElectricity = document.getElementById("btnElectricity");
+  const btnWater = document.getElementById("btnWater");
+  const btnCarInsurance = document.getElementById("btnCarInsurance");
+  const btnTax = document.getElementById("btnTax");
+  const inputContrat = document.getElementById("inputContrat");
+  const inputAmount = document.getElementById("inputAmount");
+  const inputDateFacture = document.getElementById("inputDateFacture");
 
-let RiB = document.getElementById("RIB");
-let Id = document.getElementById("id");
-let owner = document.getElementById("owner");
-let infoContainer = document.getElementById("info-container");
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-console.log(currentUser);
-let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
+  let RiB = document.getElementById("RIB");
+  let Id = document.getElementById("id");
+  let owner = document.getElementById("owner");
+  let infoContainer = document.getElementById("info-container");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  console.log(currentUser);
+  let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
                                 <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
                                 <p class="" id="owner">${currentUser.fullName}</p>`;
-infoContainer.innerHTML = content;
-
-
-
+  infoContainer.innerHTML = content;
+}
