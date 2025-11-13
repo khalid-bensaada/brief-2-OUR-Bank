@@ -115,13 +115,6 @@ function storeInfos() {
           )}${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )} 0005`,
-<<<<<<< HEAD
-          idPrincipale: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
-          idEpargne: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
-          soldePrincipale: '10 000 MAD',
-          soldeEpargne: '00 MAD'
-
-=======
           idPrincipale:
             Math.ceil(Math.random() * 8) +
             "" +
@@ -136,7 +129,6 @@ function storeInfos() {
           soldePrincipale: "10 000 MAD",
           soldeEpargne: "00 MAD",
           Plafond: "100 000 MAD",
->>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
