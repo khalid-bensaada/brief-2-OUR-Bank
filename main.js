@@ -115,11 +115,28 @@ function storeInfos() {
           )}${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )} 0005`,
+<<<<<<< HEAD
           idPrincipale: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
           idEpargne: Math.ceil(Math.random() * 8) + Math.ceil(Math.random() * 8) + '/' + Math.ceil(Math.random() * 8),
           soldePrincipale: '10 000 MAD',
           soldeEpargne: '00 MAD'
 
+=======
+          idPrincipale:
+            Math.ceil(Math.random() * 8) +
+            "" +
+            Math.ceil(Math.random() * 8) +
+            "/" +
+            Math.ceil(Math.random() * 8),
+          idEpargne:
+            Math.ceil(Math.random() * 8) +
+            Math.ceil(Math.random() * 8) +
+            "/" +
+            Math.ceil(Math.random() * 8),
+          soldePrincipale: "10 000 MAD",
+          soldeEpargne: "00 MAD",
+          Plafond: "100 000 MAD",
+>>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
@@ -231,6 +248,10 @@ document.addEventListener("DOMContentLoaded", function () {
 function tout() {
   let Virements = JSON.parse(localStorage.getItem("transactions")) || [];
   let recharge = JSON.parse(localStorage.getItem("recharge")) || [];
+  let btntout = document.querySelectorAll(".tout");
+  let buttons = document.querySelectorAll("button");
+
+  getActiveButton(buttons, btntout);
 
   let containers = document.querySelectorAll(".desktop-content");
 
@@ -253,8 +274,7 @@ function tout() {
   // })
 
   containers.forEach((container) => {
-    Virements.forEach((element) => {
-      let content = `<div class="border-t border-gray-300 p-4">
+    let content = `<div class="border-t border-gray-300 p-4 card" id='cards'>
                             <div class="flex gap-3 items-start mb-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
@@ -262,31 +282,180 @@ function tout() {
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="font-semibold">Virements</h3>
-                                    <p class="text-sm text-gray-500">Vers: ${element.to}</p>
-                                    <p class="text-sm text-gray-500">Date: ${element.date}</p>
-                                    <p class="text-sm text-gray-500">Ref: ${element.type}</p>
+                                    <p class="text-sm text-gray-500">Vers: ${Virements[0].to}</p>
+                                    <p class="text-sm text-gray-500">Date: ${Virements[0].date}</p>
+                                    <p class="text-sm text-gray-500">Ref: ${Virements[0].type}</p>
                                 </div>
-                                <span class="text-red-500 text-lg font-semibold">-${element.amount}.00 MAD</span>
+                                <span class="text-red-500 text-lg font-semibold">-${Virements[0].amount}.00 MAD</span>
                             </div>
                         </div>`;
 
-      let div = document.createElement("div");
-      div.innerHTML = content;
-      console.log(div);
+    let div = document.createElement("div");
+    div.innerHTML = content;
 
-      console.log(content);
-      container.appendChild(div);
-    });
+    console.log(div.innerHTML);
+    console.log(div.outerHTML);
+    console.log(div);
+    let card = document.getElementById("cards");
+    console.log(content);
+
+    container.appendChild(div);
   });
 }
 
 window.addEventListener("DOMContentLoaded", tout());
 
+function Recharge() {
+  const recharges = JSON.parse(localStorage.getItem("save")) || [];
+  const buttons = document.querySelectorAll("button");
+  const btnPaiements = document.querySelectorAll(".Recharges");
+  const containers = document.querySelectorAll(".desktop-content");
+
+  getActiveButton(buttons, btnPaiements);
+  displayFromLocalStorage(
+    containers,
+    recharges,
+    "paiment",
+    "/images/Frame 38.svg"
+  );
+}
+
+function Virements() {
+  const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+  const buttons = document.querySelectorAll("button");
+  const btnVirements = document.querySelectorAll(".Virements");
+  const containers = document.querySelectorAll(".desktop-content");
+
+  getActiveButton(buttons, btnVirements);
+  displayFromLocalStorage(
+    containers,
+    transactions,
+    "virements",
+    "/images/Frame 37.svg"
+  );
+}
+
+function displayFromLocalStorage(containers, transactions, id, src) {
+  containers.forEach((container) => {
+    container.innerHTML = ""; // clear previous entries
+    transactions.forEach((element) => {
+      const content = `
+        <div class="border-t border-gray-300 p-4 card" id="${id}">
+          <div class="flex gap-3 items-start mb-4">
+            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+              <img src="${src}" alt="">
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold">${
+                id === "virements" ? "Virement" : "Paiement"
+              }</h3>
+              <p class="text-sm text-gray-500">Vers: ${
+                element.to || element.number || "N/A"
+              }</p>
+              <p class="text-sm text-gray-500">Date: ${element.date || "—"}</p>
+              <p class="text-sm text-gray-500">Ref: ${
+                element.type || element.typ || "—"
+              }</p>
+            </div>
+            <span class="text-red-500 text-lg font-semibold">-${
+              element.amount || element.prix || "0"
+            }.00 MAD</span>
+          </div>
+        </div>
+      `;
+
+      container.insertAdjacentHTML("beforeend", content);
+    });
+  });
+}
+
+function getActiveButton(arr, button) {
+  let active = arr.forEach((element) => {
+    if (element.classList.contains("active")) {
+      element.classList.remove("active");
+      button.forEach((btn) => {
+        btn.classList.add("active");
+      });
+    }
+  });
+}
+
 // khalid
 
+<<<<<<< HEAD
 // Zineb 
 
 
+=======
+if (window.location.pathname == "/facture&Recharge.html") {
+  let operator = document.getElementById("operator");
+  const phoneNumber = document.getElementById("phoneNumber");
+  const price = document.getElementById("price");
+  const type = document.getElementById("type");
+  const dateRecharge = document.getElementById("dateRecharge");
+  const add = document.getElementById("add");
+  const concelIt = document.getElementById("concelIt");
+
+  // for get same solde from the sold principal
+  let changSolde;
+
+  function saveLocal(saved) {
+    let save = JSON.parse(localStorage.getItem("save")) || [];
+    save.push(saved);
+    localStorage.setItem("save", JSON.stringify(save));
+  }
+
+  // click on button of validation
+
+  add.addEventListener("click", function (e) {
+    if (
+      operator.value != "" ||
+      phoneNumber.value != "" ||
+      price.value != "" ||
+      type.value != "" ||
+      dateRecharge.value != ""
+    ) {
+      alert("seccecefull add");
+    }
+
+    let phoneRegex = "/^+212[5-7]d{8}$/";
+
+    if (phoneRegex.match(phoneNumber.value)) {
+      alert("namber valid");
+    } else {
+      alert("envalid number");
+    }
+
+    const saved = {
+      operation: operator.value,
+      number: phoneNumber.value,
+      prix: price.value,
+      typ: type.value,
+      date: dateRecharge.value,
+    };
+
+    saveLocal(saved);
+
+    alert("seccesfully saved");
+
+    operator.value = 0;
+    phoneNumber.value = "";
+    price.value = 0;
+    type.value = 0;
+    dateRecharge.value = "";
+  });
+
+  concelIt.addEventListener("click", function () {
+    operator.value = 0;
+    phoneNumber.value = "";
+    price.value = 0;
+    type.value = 0;
+    dateRecharge.value = "";
+  });
+}
+
+//zineb
+>>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b
 
 if (window.location.pathname == "/transactions.html") {
   const btnAddTransactionPerson = document.getElementById(
@@ -418,9 +587,9 @@ if (window.location.pathname == "/transactions.html") {
 
   renderTransactions();
 }
-console.log(window.location);
 
 // Recharge&Factures
+<<<<<<< HEAD
 const btnOrange = document.getElementById("btnOrange");
 const btnIam = document.getElementById("btnIam");
 const btnInwi = document.getElementById("btnInwi");
@@ -569,10 +738,23 @@ btnPay.addEventListener('click', saveFacture);
 // Card
 
 if (window.location.pathname == "/cardes.html") {
+=======
+
+if (window.location.pathname == "/cardes.html.html") {
+  const btnElectricity = document.getElementById("btnElectricity");
+  const btnWater = document.getElementById("btnWater");
+  const btnCarInsurance = document.getElementById("btnCarInsurance");
+  const btnTax = document.getElementById("btnTax");
+  const inputContrat = document.getElementById("inputContrat");
+  const inputAmount = document.getElementById("inputAmount");
+  const inputDateFacture = document.getElementById("inputDateFacture");
+
+>>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b
   let RiB = document.getElementById("RIB");
   let Id = document.getElementById("id");
   let owner = document.getElementById("owner");
   let infoContainer = document.getElementById("info-container");
+<<<<<<< HEAD
 
   console.log(currentUser);
   let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
@@ -581,3 +763,12 @@ if (window.location.pathname == "/cardes.html") {
   infoContainer.innerHTML = content;
 }
 
+=======
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  console.log(currentUser);
+  let content = `<h1 class="text-[0.9rem]" id="RIB">${currentUser.RIBprincipale}</h1>
+                                <p class="text-[0.8rem] text-gray-400" id="id">${currentUser.CIN}</p>
+                                <p class="" id="owner">${currentUser.fullName}</p>`;
+  infoContainer.innerHTML = content;
+}
+>>>>>>> 8a50664f96b8d512da4bab424da5f89162ddf56b

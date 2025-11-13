@@ -7,7 +7,16 @@
     <title>Historique</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+    .active{
+
+        background: linear-gradient(180deg,rgb(123,205,255)0%, rgb(0,74,120)  100%);
+        color: white;
+    }
+</style>
 </head>
+
+
 
 <body class="bg-gradient-to-tr from-[rgb(123,205,255)] to-[rgb(0,74,120)] min-h-[140vh] py-0 lg:py-10">
 
@@ -19,7 +28,7 @@
                     <img src="/images/OIP_10-removebg-preview.png" alt="">
                 </li>
                 <li
-                    class="row-end-3 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    class="row-end-3  col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
                     <a href="">Home</a>
                 </li>
                 <li
@@ -49,20 +58,20 @@
             <h1 class="font-semibold font-mono text-2xl">Historique and Transactions</h1>
 
             <div class="flex w-[50%] justify-between gap-2">
-                <button onclick="tout()"
-                    class="border-gray-300 border flex-1 py-3 bg-gradient-to-t from-[rgb(0,74,120)] to-[rgb(123,205,255)] shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md text-white font-medium hover:opacity-90 transition-opacity">
+                <button onclick="tout()" 
+                    class="border-gray-300 border tout flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md active hover:opacity-90 transition-opacity">
                     Tout
                 </button>
                 <button onclick="Virements()"
-                    class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
+                    class="border-gray-300 Virements border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Virements
                 </button>
                 <button onclick="Paiements()"
-                    class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
+                    class="border-gray-300 border Paiements flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Paiements
                 </button>
-                <button onclick="Recharge()"
-                    class="border-gray-300 border flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
+                <button onclick="Recharge()" 
+                    class="border-gray-300 border Recharges flex-1 py-3 shadow-[4px_4px_4px_rgb(0,0,0,0.2)] rounded-md hover:bg-gray-50 transition-colors">
                     Recharge
                 </button>
             </div>
@@ -91,20 +100,9 @@
                     <div class="desktop-content" style="display: none;">
 
                         <div class="border-t border-gray-300 p-4">
-                            <div class="flex gap-3 items-start mb-4">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                    <img src="/images/Frame 38.svg" alt="">
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold" id="recharge">Recharge</h3>
-                                    <p class="text-sm text-gray-500">Vers: mohamed</p>
-                                    <p class="text-sm text-gray-500">Date: --/--/----</p>
-                                    <p class="text-sm text-gray-500">Ref: 123456789</p>
-                                </div>
-                                <span class="text-orange-400 text-lg font-semibold">100.00 MAD</span>
-                            </div>
+                            <p class="text-gray-500 text-center">Aucune transaction</p>
                         </div>
+
                     </div>
                 </div>
 
@@ -118,21 +116,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-
-                    <div class="desktop-content" style="display: none;">
-                        <div class="border-t border-gray-300 p-4">
-                            <p class="text-gray-500 text-center">Aucune transaction</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <section class="lg:hidden bg-gray-50 min-h-screen container2" >
+    <section class="lg:hidden bg-gray-50 min-h-screen container2">
         <header class="flex justify-around ">
             <img src="/images/User.svg" alt="">
-            <span class="bg-[rgb(37,37,37)] text-white flex items-center justify-center w-[50%] rounded-b-lg text-2xl font-bold py-5 shadow-[0_8px_4px_gray] text-shadow-[3px_3px_2px_black]">Historique</span>
+            <span
+                class="bg-[rgb(37,37,37)] text-white flex items-center justify-center w-[50%] rounded-b-lg text-2xl font-bold py-5 shadow-[0_8px_4px_gray] text-shadow-[3px_3px_2px_black]">Historique</span>
             <img src="/images/Icon (1).svg" alt="">
         </header>
 
@@ -150,19 +143,19 @@
 
             <div class="flex gap-2 mb-4 overflow-x-auto pb-2">
                 <button onclick="tout()"
-                    class="px-4 py-2 bg-gradient-to-t from-[rgb(0,74,120)] to-[rgb(123,205,255)] text-white rounded-lg shadow-md whitespace-nowrap text-sm font-medium">
+                    class="px-4 border border-gray-300 py-2 tout active rounded-lg shadow-md whitespace-nowrap text-sm font-medium">
                     Tout
                 </button>
                 <button onclick="Virements()"
-                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
+                    class="px-4 py-2 bg-white border Virements border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Virements
                 </button>
                 <button onclick="Paiements()"
-                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
+                    class="px-4 py-2 bg-white Paiements border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Paiements
                 </button>
-                <button onclick="Recharge()"
-                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
+                <button onclick="Recharge()" 
+                    class="px-4 py-2 bg-white border Recharges border-gray-300 rounded-lg shadow-sm whitespace-nowrap text-sm font-medium">
                     Recharges
                 </button>
             </div>
@@ -181,75 +174,13 @@
                     </svg>
                 </button>
 
-                <div id="dropdown1"  class="desktop-content mt-3 space-y-3 max-h-0 overflow-hidden transition-all duration-300">
-                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
-                        <div class="flex items-start justify-between mb-2">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
-                                    <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">Virements</h3>
-                                </div>
-                            </div>
-                            <span class="text-red-500 font-bold text-lg">-1000.00 MAD</span>
-                        </div>
-                        <div class="ml-13 text-sm text-gray-500 space-y-1">
-                            <p>Vers: mohamed</p>
-                            <p>Date: --/--/---- 14:30</p>
-                            <p>Ref: 123456789</p>
-                        </div>
-                    </div>
+                <div id="dropdown1"
+                    class="desktop-content mt-3 space-y-3 max-h-0 overflow-hidden transition-all duration-300">
 
-                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
-                        <div class="flex items-start justify-between mb-2">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                    <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">Virements</h3>
-                                </div>
-                            </div>
-                            <span class="text-green-500 font-bold text-lg">+1000.00 MAD</span>
-                        </div>
-                        <div class="ml-13 text-sm text-gray-500 space-y-1">
-                            <p>Vers: mohamed</p>
-                            <p>Date: --/--/---- 14:30</p>
-                            <p>Ref: 123456789</p>
-                        </div>
-                    </div>
 
-                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
-                        <div class="flex items-start justify-between mb-2">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
-                                    <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-gray-900">Recharge</h3>
-                                </div>
-                            </div>
-                            <span class="text-yellow-500 font-bold text-lg">1000.00 MAD</span>
-                        </div>
-                        <div class="ml-13 text-sm text-gray-500 space-y-1">
-                            <p>Vers: mohamed</p>
-                            <p>Date: --/--/---- 14:30</p>
-                            <p>Ref: 123456789</p>
-                        </div>
-                    </div>
+
+
+
                 </div>
             </div>
 
@@ -289,7 +220,7 @@
     </section>
 
     <script src="main.js">
-        
+
     </script>
 </body>
 
