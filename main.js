@@ -127,9 +127,9 @@ function storeInfos() {
             Math.ceil(Math.random() * 8) +
             "/" +
             Math.ceil(Math.random() * 8),
-          soldePrincipale: "10 000 MAD",
-          soldeEpargne: "00 MAD",
-          Plafond: "100 000 MAD",
+          soldePrincipale: `${10000} MAD`,
+          soldeEpargne: `${0} MAD`,
+          Plafond: `${10000} MAD`,
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
@@ -410,7 +410,7 @@ alert("seccesfully saved");
 
 operator.value =0;
 phoneNumber.value="";
-price.value=0;
+price.value=0;    
 type.value=0;
 dateRecharge.value="";
 
@@ -427,7 +427,9 @@ dateRecharge.value="";
 
 });
 
-
+function many(){
+    soldePrincipale = soldePrincipale - price.value ;
+};
 
 
 
@@ -562,7 +564,7 @@ if (window.location.pathname == "/transactions.html") {
 }
 console.log(window.location);
 
-// Recharge&Factures
+// Factures
 
 const btnElectricity = document.getElementById("btnElectricity");
 const btnWater = document.getElementById("btnWater");
