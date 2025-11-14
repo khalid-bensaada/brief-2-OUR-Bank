@@ -79,8 +79,9 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
-            }/${new Date().getDate()}`,
+          dateDeSignup: `${new Date().getFullYear()}/${
+            new Date().getMonth() + 1
+          }/${new Date().getDate()}`,
           RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -126,9 +127,9 @@ function storeInfos() {
             Math.ceil(Math.random() * 8) +
             "/" +
             Math.ceil(Math.random() * 8),
-          soldePrincipale: "10 000 MAD",
-          soldeEpargne: "00 MAD",
-          Plafond: "100 000 MAD",
+          soldePrincipale: `${10000} MAD`,
+          soldeEpargne: `${0} MAD`,
+          Plafond: `${10000} MAD`,
         };
         console.log(person.RIBepargne);
         userInfo.push(person);
@@ -178,9 +179,9 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      // setTimeout(() => {
-      //   window.location.href = "home.html";
-      // }, 500);
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 500);
     });
   } else {
     email.value = "";
@@ -284,7 +285,7 @@ function Virements() {
 
 function displayFromLocalStorage(containers, transactions, id, src) {
   containers.forEach((container) => {
-    container.innerHTML = ""; // clear previous entries
+    container.innerHTML = "";
     transactions.forEach((element) => {
       const content = `
         <div class="border-t border-gray-300 p-4 card" id="${id}">
@@ -307,7 +308,7 @@ function displayFromLocalStorage(containers, transactions, id, src) {
         </div>
       `;
 
-      container.insertAdjacentHTML("beforeend", content);
+      container.innerHTML += content
     });
   });
 }
@@ -323,17 +324,28 @@ function getActiveButton(arr, button) {
   });
 }
 
+<<<<<<< HEAD
 if (window.location.pathname == "/Historique") {
+=======
+if (window.location.pathname == "/Historique.html") {
+>>>>>>> b23bd6185e3cf85e80a8e3a2c7f244ddb559f41c
   let notifIcon = document.querySelector(".notifIcon");
   let ctr = 0;
 
   notifIcon.addEventListener("click", () => {
     let notification = document.querySelector(".notification");
+<<<<<<< HEAD
     notification.classList.toggle('opacity-100')
     notification.classList.contains('opacity-100') ?
       notification.style.top = '15px' : notification.style.top = '0px'
 
 
+=======
+    notification.classList.toggle("opacity-100");
+    notification.classList.contains("opacity-100")
+      ? (notification.style.top = "15px")
+      : (notification.style.top = "0px");
+>>>>>>> b23bd6185e3cf85e80a8e3a2c7f244ddb559f41c
   });
 }
 
@@ -405,6 +417,27 @@ if (window.location.pathname == "/facture&Recharge.html") {
     dateRecharge.value = "";
   });
 }
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+document.getElementById("rib").textContent = currentUser.RIBprincipale;
+document.getElementById("total").textContent = currentUser.soldePrincipale;
+document.getElementById("noom").textContent = currentUser.fullName;
+
+// prof1
+
+document.getElementById("funa").textContent = currentUser.fullName;
+
+document.getElementById("cni").textContent = currentUser.CIN;
+
+document.getElementById("mal").textContent = currentUser.email;
+
+document.getElementById("pnumber").textContent = currentUser.telephone;
+
+// pdf
+document.getElementById("createPdf").addEventListener("click", function () {
+  window.print();
+});
 
 //zineb
 
@@ -517,8 +550,9 @@ if (window.location.pathname == "/transactions.html") {
 
     transactions.forEach((t) => {
       const card = document.createElement("div");
-      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${t.type === "Person" ? "bg--100" : "bg--100"
-        }`;
+      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${
+        t.type === "Person" ? "bg--100" : "bg--100"
+      }`;
 
       card.innerHTML = `
              <div>
@@ -539,7 +573,7 @@ if (window.location.pathname == "/transactions.html") {
   renderTransactions();
 }
 
-// Recharge&Factures
+// Factures
 
 if (window.location.pathname == "/cardes.html.html") {
   const btnElectricity = document.getElementById("btnElectricity");
