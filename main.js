@@ -79,8 +79,9 @@ function storeInfos() {
           telephone: phone.value,
           email: SignEmail.value,
           CIN: CIN.value,
-          dateDeSignup: `${new Date().getFullYear()}/${new Date().getMonth() + 1
-            }/${new Date().getDate()}`,
+          dateDeSignup: `${new Date().getFullYear()}/${
+            new Date().getMonth() + 1
+          }/${new Date().getDate()}`,
           RIBprincipale: `1079 ${Math.floor(Math.random() * 9)}${Math.floor(
             Math.random() * 9
           )}${Math.floor(Math.random() * 9)}${Math.floor(
@@ -178,9 +179,9 @@ function validateInfos() {
       icon: "success",
       confirmButtonText: "Continue",
     }).then(() => {
-      // setTimeout(() => {
-      //   window.location.href = "home.html";
-      // }, 500);
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 500);
     });
   } else {
     email.value = "";
@@ -284,7 +285,7 @@ function Virements() {
 
 function displayFromLocalStorage(containers, transactions, id, src) {
   containers.forEach((container) => {
-    container.innerHTML = ""; // clear previous entries
+    container.innerHTML = "";
     transactions.forEach((element) => {
       const content = `
         <div class="border-t border-gray-300 p-4 card" id="${id}">
@@ -293,21 +294,25 @@ function displayFromLocalStorage(containers, transactions, id, src) {
               <img src="${src}" alt="">
             </div>
             <div class="flex-1">
-              <h3 class="font-semibold">${id === "virements" ? "Virement" : "Paiement"
-        }</h3>
-              <p class="text-sm text-gray-500">Vers: ${element.to || element.number || "N/A"
-        }</p>
+              <h3 class="font-semibold">${
+                id === "virements" ? "Virement" : "Paiement"
+              }</h3>
+              <p class="text-sm text-gray-500">Vers: ${
+                element.to || element.number || "N/A"
+              }</p>
               <p class="text-sm text-gray-500">Date: ${element.date || "—"}</p>
-              <p class="text-sm text-gray-500">Ref: ${element.type || element.typ || "—"
-        }</p>
+              <p class="text-sm text-gray-500">Ref: ${
+                element.type || element.typ || "—"
+              }</p>
             </div>
-            <span class="text-red-500 text-lg font-semibold">-${element.amount || element.prix || "0"
-        }.00 MAD</span>
+            <span class="text-red-500 text-lg font-semibold">-${
+              element.amount || element.prix || "0"
+            }.00 MAD</span>
           </div>
         </div>
       `;
 
-      container.insertAdjacentHTML("beforeend", content);
+      container.innerHTML += content
     });
   });
 }
@@ -323,17 +328,18 @@ function getActiveButton(arr, button) {
   });
 }
 
-// let notifIcon = document.querySelector(".notifIcon");
-// let ctr = 0;
+if (window.location.pathname == "/Historique.html") {
+  let notifIcon = document.querySelector(".notifIcon");
+  let ctr = 0;
 
-// notifIcon.addEventListener("click", () => {
-//   let notification = document.querySelector(".notification");
-//   notification.classList.toggle('opacity-100')
-//   notification.classList.contains('opacity-100') ?
-//     notification.style.top = '15px' : notification.style.top = '0px'
-
-
-// });
+  notifIcon.addEventListener("click", () => {
+    let notification = document.querySelector(".notification");
+    notification.classList.toggle("opacity-100");
+    notification.classList.contains("opacity-100")
+      ? (notification.style.top = "15px")
+      : (notification.style.top = "0px");
+  });
+}
 
 // khalid
 
@@ -404,17 +410,11 @@ if (window.location.pathname == "/facture&Recharge.html") {
   });
 }
 
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-
-
-
-let currentUser = JSON.parse(localStorage.getItem('currentUser'))
-
-document.getElementById("rib").textContent = currentUser.RIBprincipale
-document.getElementById("total").textContent = currentUser.soldePrincipale
-document.getElementById("noom").textContent = currentUser.fullName
-
-
+document.getElementById("rib").textContent = currentUser.RIBprincipale;
+document.getElementById("total").textContent = currentUser.soldePrincipale;
+document.getElementById("noom").textContent = currentUser.fullName;
 
 // prof1
 
@@ -426,13 +426,10 @@ document.getElementById("mal").textContent = currentUser.email;
 
 document.getElementById("pnumber").textContent = currentUser.telephone;
 
-
 // pdf
-document.getElementById("createPdf").addEventListener('click', function () {
-
+document.getElementById("createPdf").addEventListener("click", function () {
   window.print();
 });
-
 
 //zineb
 
@@ -545,8 +542,9 @@ if (window.location.pathname == "/transactions.html") {
 
     transactions.forEach((t) => {
       const card = document.createElement("div");
-      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${t.type === "Person" ? "bg--100" : "bg--100"
-        }`;
+      card.className = `rounded-sm p-4 flex justify-between w-full shadow-md  ${
+        t.type === "Person" ? "bg--100" : "bg--100"
+      }`;
 
       card.innerHTML = `
              <div>
