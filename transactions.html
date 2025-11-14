@@ -67,36 +67,33 @@
 
 
                     
-                   <div class="gird grid-cols-3">
-                    <div class=" w-[100%] flex justify-center mt-6  md:relative md:left-60  ">
-                        <input class="w-[50%] border rounded-lg py-2 px-4 md:w-[70%] " type="text" name="search" placeholder="Search">
-
+                   <div class="flex flex-col items-center w-full px-2 ">
+                    <div class=" w-[100%] flex justify-center mt-6  md:relative md:left- ">
+                        <input class="w-[60%] border border-blue-400 rounded-3xl py-2 px-4 md:w-[25%]" type="text" name="search" placeholder="Search">
                     </div>
-                    <div class="grid md:grid-cols-2 grid-rows-2 gap-2 md:gap-4 justify-evenly mt-6 md:ml-6">
+                    <div class="md:grid md:grid-cols-2 flex gap-4 text-sm md:gap-4 justify-evenly mt-6 md:ml-6">
                         <button id="btnAddTransactionPerson"
                             class="bg-[#45A5E0]  text-white px-4 py-2 rounded-md cursor-pointer">
-                            Add transfer to Person
+                            transfer to Person
                         </button>
-                        <button id="btnAddTransactionDeposit"
-                            class="bg-[#000000] text-white px-4 py-2 rounded-md cursor-pointer">
-                            Add transfer to Deposit
+                        <button id="btnAddTransactionDeposit" class="bg-[#000000] text-white px-4 py-2 rounded-md cursor-pointer">transfer to Deposit
                         </button>
                     </div>
-                     <h3 class="text-black mt-10 mb-4 text-center  text-xl font-semibold">Bank transfer History</h3>
+                     <h3 class="text-[#45A5E0] mt-10 mb-4 text-center  text-xl font-semibold">Bank transfer History</h3>
                     <div id="transactionList"
-                        class="flex felx-row w-[100%] self-center md:flex flex-col gap-4  md:ml-10">
+                        class="flex felx-row w-[100%] md:h-[30%] self-center md:flex flex-col gap-2 md:w-[50%] ">
 
                     </div>
 
                     
 
                     <div id="formPerson"
-                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-black text-base shadow-lg mt-6">
+                        class="hidden border-2 rounded-sm md:w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-black text-base shadow-lg mt-6">
                         <h3
                             class="text-lg font-semibold mb-4 text-white">transfer
                             to Person</h3>
                         <form
-                            class="flex flex-col gap-6 bg-white p-6 rounded-md shadow-sm">
+                            class="md:flex md:flex-col md:gap-6 bg-white p-6 rounded-md shadow-sm">
                             <label for="beneficiary" class="font-medium">Full name of
                                 Beneficiary:</label>
                                 <input  class="border rounded-md p-2 w-full" type="text" name="beneficiary" placeholder="beneficiary"  id="beneficiary" />
@@ -113,27 +110,27 @@
                         </div>
                     </div>
 
-                    <div id="formDeposit"
-                        class="hidden border-2 rounded-sm w-[600px] p-6 bg-gradient-to-r from-[rgb(93,177,229)] to-[rgb(52,98,127)]  text-black text-base shadow-lg mt-6">
-                        <h3
-                            class="text-lg font-semibold mb-4 text-white">Deposit
-                            to Account</h3>
-                        <form
-                            class="flex flex-col gap-6 bg-white p-6 rounded-md shadow-sm">
-                            <label for="amountDeposit"
-                                class="font-medium">Amount:</label>
-                            <input type="number" id="amountDeposit"
-                                placeholder="Enter amount"
-                                class="border rounded-md p-2 w-full">
+            
+                        <div id="formDeposit" class="hidden border-2 rounded-sm md:w-[600px] p-6 bg-slate-900 text-black text-base shadow-lg mt-6">
+                        <h3 class="text-lg font-semibold mb-4 text-white">Deposit to Account</h3>
+                       <div class=" fixed inset-0 backdrop-blur-sm w-full">
+                        <div class="w-full flex justify-center items-center">
+                            <div class="bg-white p-4 rounded-3xl self-center w-[50%]">
+                            <form class=" md:flex md:flex-col md:gap-6  p-6 rounded-md shadow-sm">
+                            <label for="amountDeposit" class="font-medium">Amount:</label>
+                            <input type="number" id="amountDeposit" placeholder="Enter amount" class="border rounded-md p-2 w-full">
                         </form>
                         <div class="mt-4 flex justify-end">
-                            <button id="btnNextDeposit"
-                                class="bg-[#45A5E0] text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
+                            <button id="btnNextDeposit" class="bg-[#45A5E0] text-white px-4 py-2 rounded-md cursor-pointer">Next</button>
+                        </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
+                    
 
                     <div id="formSummary"
-                        class="hidden rounded-sm w-[600px] p-6 bg-gradient-to-t from-gray-400 to-gray-600 text-black text-base shadow-lg mt-6">
+                        class="hidden rounded-sm w-[600px] p-6 bg-gradient-to-t from-black-400 to-white-600 text-black text-base shadow-lg mt-6">
                         <div class="bg-white p-6 rounded-sm border">
                             <h3>Summary</h3>
                             <div id="summaryType">Type:</div>
