@@ -8,9 +8,49 @@
     <title>Home</title>
 </head>
 
+<style>
+    .card {
+        background-image: url(/images/card.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+</style>
+
 <body class="overflow-x-hidden bg-[#45A5E0]">
     <div class="bg-[#FFFFFF] w-[90%] h-[900px] m-auto rounded-[50px] mt-[50px]">
-        <header class=" bg-black w-[15%] h-[900px] rounded-tl-[50px] rounded-bl-[50px]"></header>
+        <header cla<nav class="w-[15%] min-h-[100vh] p-[1%] bg-black">
+            <ul class="h-full grid grid-cols-3 grid-rows-16 justify-center gap-4">
+                <li class="row-end-1 col-span-3 text-center">
+                    <img src="/images/OIP_10-removebg-preview.png" alt="">
+                </li>
+                <li
+                    class="row-end-3  col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="home.html">Home</a>
+                </li>
+                <li
+                    class="row-end-5 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors  cursor-pointer">
+                    <a href="Historique.html">Historique</a>
+                </li>
+                <li
+                    class="row-end-7 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="cardes.html">Cards</a>
+                </li>
+                <li
+                    class="row-end-9 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="facture&Recharge.html">Factures & Recharge</a>
+                </li>
+                <li
+                    class="row-end-11 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="transactions.html">Transactions</a>
+                </li>
+                <li
+                    class="row-end-13 col-span-3 text-center text-[rgb(212,175,55)] hover:text-white transition-colors cursor-pointer">
+                    <a href="profile1.html">Profile</a>
+                </li>
+            </ul>
+            </nav>ss=" bg-black w-[15%] h-[900px] rounded-tl-[50px] rounded-bl-[50px]">
+        </header>
         <div class="flex justify-center items-center ">
             <div
                 class=" relative  bottom-[850px] left-[8%] rounded-[25px] border border-black w-[60%] h-[300px] bg-black">
@@ -20,46 +60,46 @@
                 <div>
 
                 </div>
-                <div class="flex ">
-                    <div class="relative left-[26%] top-[60px] ">
-                        <img src="images/Tarjeta 3.png" alt="card of bank">
-                        <p id="rib"></p>
-                        <p id="total"></p>
-                        <img src="" alt="">
-                        <p id="noom"></p>
+                <div class="text-white min-w-sm h-full flex flex-col items-center justify-center">
+                    <div class="flex  card h-full w-[60%] md:h-[30.5vh]">
+                        <div class="h-full mt-[28%] ml-[19%]" id="info-container">
+
+                        </div>
                     </div>
+
                 </div>
             </div>
-        </div>
-        <div>
-            <div
-                class="bg-white border border-gray-300 shadow-xl rounded-2xl p-6 w-[350px] hover:shadow-2xl transition duration-300">
-                <h2 class="text-xl font-bold mb-4 text-center text-gray-800"> Currency Exchange Rates</h2>
-
-                <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="font-medium text-gray-600">🇺🇸 USD / MAD</span>
-                    <span class="font-semibold text-green-600">10.12 <span class="text-green-400">+0.04</span></span>
-                </div>
-
-                <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="font-medium text-gray-600">🇪🇺 EUR / MAD</span>
-                    <span class="font-semibold text-red-600">10.85 <span class="text-red-400">-0.02</span></span>
-                </div>
-
-                <div class="flex justify-between border-b border-gray-200 py-2">
-                    <span class="font-medium text-gray-600">🇬🇧 GBP / MAD</span>
-                    <span class="font-semibold text-green-600">12.65 <span class="text-green-400">+0.10</span></span>
-                </div>
-
-                <div class="flex justify-between pt-2">
-                    <span class="font-medium text-gray-600">🇸🇦 SAR / MAD</span>
-                    <span class="font-semibold text-gray-700">2.69 <span class="text-gray-400">0.00</span></span>
-                </div>
-            </div>
-
         </div>
     </div>
-    <script src="main.js"></script>
+    <div>
+        <div
+            class="bg-white border border-gray-300 shadow-xl rounded-2xl absolute top-[75%] left-[43%] p-6 w-[350px] hover:shadow-2xl transition duration-300">
+            <h2 class="text-xl font-bold mb-4 text-center text-gray-800"> Currency Exchange Rates</h2>
+
+            <div class="flex justify-between border-b border-gray-200 py-2">
+                <span class="font-medium text-gray-600">🇺🇸 USD / MAD</span>
+                <span class="font-semibold text-green-600">10.12 <span class="text-green-400">+0.04</span></span>
+            </div>
+
+            <div class="flex justify-between border-b border-gray-200 py-2">
+                <span class="font-medium text-gray-600">🇪🇺 EUR / MAD</span>
+                <span class="font-semibold text-red-600">10.85 <span class="text-red-400">-0.02</span></span>
+            </div>
+
+            <div class="flex justify-between border-b border-gray-200 py-2">
+                <span class="font-medium text-gray-600">🇬🇧 GBP / MAD</span>
+                <span class="font-semibold text-green-600">12.65 <span class="text-green-400">+0.10</span></span>
+            </div>
+
+            <div class="flex justify-between pt-2">
+                <span class="font-medium text-gray-600">🇸🇦 SAR / MAD</span>
+                <span class="font-semibold text-gray-700">2.69 <span class="text-gray-400">0.00</span></span>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="home.js"></script>
 </body>
 
 </html>

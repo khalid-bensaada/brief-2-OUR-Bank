@@ -324,28 +324,17 @@ function getActiveButton(arr, button) {
   });
 }
 
-<<<<<<< HEAD
-if (window.location.pathname == "/Historique") {
-=======
 if (window.location.pathname == "/Historique.html") {
->>>>>>> b23bd6185e3cf85e80a8e3a2c7f244ddb559f41c
   let notifIcon = document.querySelector(".notifIcon");
   let ctr = 0;
 
   notifIcon.addEventListener("click", () => {
     let notification = document.querySelector(".notification");
-<<<<<<< HEAD
     notification.classList.toggle('opacity-100')
     notification.classList.contains('opacity-100') ?
       notification.style.top = '15px' : notification.style.top = '0px'
 
 
-=======
-    notification.classList.toggle("opacity-100");
-    notification.classList.contains("opacity-100")
-      ? (notification.style.top = "15px")
-      : (notification.style.top = "0px");
->>>>>>> b23bd6185e3cf85e80a8e3a2c7f244ddb559f41c
   });
 }
 
@@ -416,28 +405,15 @@ if (window.location.pathname == "/facture&Recharge.html") {
     type.value = 0;
     dateRecharge.value = "";
   });
-}
-
-let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 document.getElementById("rib").textContent = currentUser.RIBprincipale;
 document.getElementById("total").textContent = currentUser.soldePrincipale;
 document.getElementById("noom").textContent = currentUser.fullName;
+}
 
-// prof1
-
-document.getElementById("funa").textContent = currentUser.fullName;
-
-document.getElementById("cni").textContent = currentUser.CIN;
-
-document.getElementById("mal").textContent = currentUser.email;
-
-document.getElementById("pnumber").textContent = currentUser.telephone;
 
 // pdf
-document.getElementById("createPdf").addEventListener("click", function () {
-  window.print();
-});
 
 //zineb
 
